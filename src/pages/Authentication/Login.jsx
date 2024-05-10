@@ -1,8 +1,30 @@
 import { Link } from 'react-router-dom';
 import gitbub from '../../assets/github.png';
 import google from '../../assets/google.png';
+import { useForm } from "react-hook-form"
+import { useContext } from "react"
+
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext)
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        const { email, password } = data;
+        signIn(email, password)
+            .then(result => {
+            console.log(result.user);
+            })
+            .catch(error => {
+            console.log(error.message);
+        })
+    }
+
     return (
         <div className=' flex my-10 justify-center items-center min-h-[calc(100vh-306px)]'>
             <div className='w-2/3 lg:w-3/6 mx-auto bg-slate-200 rounded-lg shadow-lg p-4'>
@@ -37,7 +59,7 @@ const Login = () => {
 
                     <span className='w-1/5 border-b border-slate-400 dark:border-gray-400 lg:w-1/4'></span>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='mt-4'>
                         <label
                             className='block mb-2 text-sm md:text-lg font-medium text-gray-600 '
@@ -46,6 +68,7 @@ const Login = () => {
                             Email Address
                         </label>
                         <input
+                            {...register("email", { required: true })}
                             placeholder='Enter Your Email'
                             id='LoggingEmailAddress'
                             autoComplete='email'
@@ -53,6 +76,7 @@ const Login = () => {
                             className='block w-full h-12 px-4 py-2 border-slate-300  text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                             type='email'
                         />
+                        {errors.email && <span className="text-red-500">This field is required</span>}
                     </div>
 
                     <div className='mt-4'>
@@ -66,6 +90,7 @@ const Login = () => {
                         </div>
 
                         <input
+                            {...register("password", { required: true })}
                             placeholder='Enter Your Password'
                             id='loggingPassword'
                             autoComplete='current-password'
@@ -73,6 +98,7 @@ const Login = () => {
                             className='block w-full h-12 px-4 py-2 border-slate-300 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                             type='password'
                         />
+                        {errors.password && <span className="text-red-500">This field is required</span>}
                     </div>
                     <div className='mt-6'>
                         <button
