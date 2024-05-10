@@ -29,13 +29,13 @@ const Login = () => {
                     </span>
                 </div>
                 <div className='flex items-center justify-between mt-4'>
-                    <span className='w-1/5 border-b  lg:w-1/4'></span>
+                    <span className='w-1/5 border-b border-slate-400  lg:w-1/4'></span>
 
                     <div className='text-xs text-center text-gray-500 uppercase  hover:underline'>
                         or login with email
                     </div>
 
-                    <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
+                    <span className='w-1/5 border-b border-slate-400 dark:border-gray-400 lg:w-1/4'></span>
                 </div>
                 <form>
                     <div className='mt-4'>
@@ -49,7 +49,7 @@ const Login = () => {
                             id='LoggingEmailAddress'
                             autoComplete='email'
                             name='email'
-                            className='block w-full h-12 px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                            className='block w-full h-12 px-4 py-2 border-slate-300  text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                             type='email'
                         />
                     </div>
@@ -68,7 +68,7 @@ const Login = () => {
                             id='loggingPassword'
                             autoComplete='current-password'
                             name='password'
-                            className='block w-full h-12 px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                            className='block w-full h-12 px-4 py-2 border-slate-300 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                             type='password'
                         />
                     </div>
@@ -82,7 +82,7 @@ const Login = () => {
                     </div>
                 </form>
                 <div className='flex items-center justify-between mt-4'>
-                    <span className='w-1/5 border-b  md:w-1/4'></span>
+                    <span className='w-1/5 border-b border-slate-400  md:w-1/4'></span>
 
                     <Link
                         to='/register'
@@ -91,7 +91,7 @@ const Login = () => {
                         New to here. Please Register
                     </Link>
 
-                    <span className='w-1/5 border-b  md:w-1/4'></span>
+                    <span className='w-1/5 border-b border-slate-400  md:w-1/4'></span>
                 </div>
                 
 
