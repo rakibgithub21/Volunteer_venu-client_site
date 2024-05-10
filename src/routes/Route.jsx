@@ -3,6 +3,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Main from "../layouts/Main";
+import NeedVolunteer from "../pages/NeedVolunteer";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element:<Register></Register>
+            },
+            {
+                path: '/need-volunteer',
+                element:<NeedVolunteer></NeedVolunteer>
             }
         ]
     },
