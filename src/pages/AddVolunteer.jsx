@@ -3,10 +3,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import volunteer from '../assets/volunteering-background.webp'
 import { AuthContext } from '../providers/AuthProvider';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddVolunteer = () => {
     const{user} = useContext(AuthContext)
-    const [startDate, setStartDate] = useState(new Date());
+    const [deadline, setStartDate] = useState(new Date());
     const handlePostButton = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -16,11 +18,30 @@ const AddVolunteer = () => {
         const category = form.category.value;
         const location = form.location.value;
         const volunteerNeed = form.volunteerNeed.value;
-        const OrganizerName = user?.displayName;
+        const organizerName = user?.displayName;
         const organizerEmail = user?.email;
-        const allData = { thumbnail, title, description, startDate, category, location, volunteerNeed, OrganizerName, organizerEmail }
+        const organizerPhoto = user?.photoURL;
+        const postBy = {
+            name:organizerName,
+            email:organizerEmail,
+            photo:organizerPhoto
+        }
+        const allData = { thumbnail, title, description, deadline, category, location, volunteerNeed,  postBy }
         // console.log(thumbnail, title, description, category, location, volunteerNeed, OrganizerName, organizerEmail);
-console.log(allData);
+        console.log(allData);
+        axios.post('http://localhost:5000/volunteer', allData)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Congratulation You Add Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Back'
+                    })
+                }
+        })
+        
     }
 
     return (
@@ -89,7 +110,7 @@ console.log(allData);
                             <label htmlFor="deadline" className="block font-semibold mb-1">Deadline:</label>
                             <DatePicker
                                 className="border p-2 rounded-md"
-                                selected={startDate} onChange={(date) => setStartDate(date)} />
+                                selected={deadline} onChange={(date) => setStartDate(date)} />
                         </div>
                   </div>
 

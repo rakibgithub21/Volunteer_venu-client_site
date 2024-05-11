@@ -1,9 +1,10 @@
+import VolunteerNeedsSection from "./VolunteerNeedsSection";
 
 
 const Home = () => {
     return (
         <div>
-            <h3>This is home</h3>
+            <VolunteerNeedsSection></VolunteerNeedsSection>
         </div>
     );
 };
