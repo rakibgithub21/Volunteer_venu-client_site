@@ -6,7 +6,7 @@ const DetailsValunteer = () => {
     console.log(data);
     return (
         <div className="max-w-5xl mx-auto overflow-hidden font-raleway bg-white rounded-lg shadow-md mt-5">
-            <img className="object-cover w-full h-[500px]" src={thumbnail} alt="Article"/>
+            <img className=" w-full md:h-[500px]" src={thumbnail} alt="Article"/>
 
                 <div className="p-6">
                     <div className="space-y-1 ">
@@ -14,7 +14,7 @@ const DetailsValunteer = () => {
                     <p className="text-xl font-medium  dark:text-blue-400">{title}</p>
                     <p>Location: {location}</p>
                     <p>Volunteer Need: {volunteerNeed}</p>
-                    <p>{deadline}</p>
+                    <p>{new Date(deadline).toLocaleDateString()}</p>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{description}</p>
                     </div>
 

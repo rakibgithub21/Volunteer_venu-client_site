@@ -46,7 +46,7 @@ const NeedVolunteer = () => {
                     <button className="btn join-item rounded-r-full">Search</button>
                 </form>
             </div>
-            <div className="grid my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-2">
+            <div className="grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-3">
                 {
                     allVolunteer.map(volunteer => <AllVolunteer
                         key={volunteer._id}
