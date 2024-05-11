@@ -1,7 +1,12 @@
+import { useContext, useState } from 'react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import volunteer from '../assets/volunteering-background.webp'
+import { AuthContext } from '../providers/AuthProvider';
 
 const AddVolunteer = () => {
-
+    const{user} = useContext(AuthContext)
+    const [startDate, setStartDate] = useState(new Date());
     const handlePostButton = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -11,9 +16,9 @@ const AddVolunteer = () => {
         const category = form.category.value;
         const location = form.location.value;
         const volunteerNeed = form.volunteerNeed.value;
-        const OrganizerName = form.OrganizerName.value;
-        const organizerEmail = form.organizerEmail.value;
-        const allData = { thumbnail, title, description, category, location, volunteerNeed, OrganizerName, organizerEmail }
+        const OrganizerName = user?.displayName;
+        const organizerEmail = user?.email;
+        const allData = { thumbnail, title, description, startDate, category, location, volunteerNeed, OrganizerName, organizerEmail }
         // console.log(thumbnail, title, description, category, location, volunteerNeed, OrganizerName, organizerEmail);
 console.log(allData);
     }
@@ -32,7 +37,7 @@ console.log(allData);
 
                 </div >
             </div>
-            <div className=' lg:col-span-3 py-4 rounded-2xl border-l-8 border-t-2 border-rose-500 shadow-2xl px-7'>
+            <div className=' lg:col-span-3 py-4 rounded-2xl border-l-8 border-b-2 border-rose-500 shadow-2xl px-7'>
                 <form onSubmit={handlePostButton}>
                     {/* thumbnail */}
                     <div className="mb-4">
@@ -73,29 +78,34 @@ console.log(allData);
                         </div>
                     </div>
 
-                    {/* No.V needs */}
-                    <div className="mb-4">
-                        <label htmlFor="volunteersNeeded"  className="block font-semibold mb-1">No. of Volunteers Needed:</label>
-                        <input name='volunteerNeed' type="number" id="volunteersNeeded" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
-                    </div>
+                    <div className='md:flex gap-4'>
+                        {/* No.V needs */}
+                        <div className="mb-4 flex-auto">
+                            <label htmlFor="volunteersNeeded" className="block font-semibold mb-1">No. of Volunteers Needed:</label>
+                            <input name='volunteerNeed' type="number" id="volunteersNeeded" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
+                        </div>
+                        {/* date picker */}
+                        <div className="mb-4 ">
+                            <label htmlFor="deadline" className="block font-semibold mb-1">Deadline:</label>
+                            <DatePicker
+                                className="border p-2 rounded-md"
+                                selected={startDate} onChange={(date) => setStartDate(date)} />
+                        </div>
+                  </div>
 
-                    {/* date picker */}
-                    <div className="mb-4">
-                        <label htmlFor="deadline" className="block font-semibold mb-1">Deadline:</label>
-                        {/* <DatePicker id="deadline" selected={deadline} onChange={(date) => setDeadline(date)} className="w-full border border-gray-300 rounded p-2" /> */}
-                    </div>
+
 
                     {/* Organizer Name */}
                     <div className="mb-4">
                         <label className="block font-semibold mb-1">Organizer Name:</label>
-                        <input name='OrganizerName' type="text" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"  />
+                        <input name='OrganizerName' defaultValue={user?.displayName} readOnly type="text" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"  />
                     </div>
 
 
                     {/* Organizer Email */}
                     <div className="mb-4">
                         <label className="block font-semibold mb-1">Organizer Email:</label>
-                        <input name='organizerEmail' type="email" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"  />
+                        <input name='organizerEmail'readOnly defaultValue={user?.email} type="email" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"  />
                     </div>
 
                     <input type="submit" className='btn btn-outline w-full btn-ghost' value="POST" />
