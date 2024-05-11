@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { MdOutlineCategory } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 const Volunteer = ({ volunteer }) => {
@@ -24,7 +25,7 @@ const Volunteer = ({ volunteer }) => {
 
                 <div className='flex justify-between'>
                     <p className="py-2 text-gray-700  dark:text-gray-400">Deadline: {new Date(volunteer?.deadline).toLocaleDateString()}</p>
-                    <button className="px-2 py-1 text-xs font-semibold  text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">View Details</button>
+                    <Link to={`/volunteer-details/${volunteer._id}`}><button className="px-2 py-1 text-xs font-semibold  text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">View Details</button></Link>
                 </div>
 
 
