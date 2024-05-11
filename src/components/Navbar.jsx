@@ -13,9 +13,11 @@ const Navbar = () => {
         const localTheme = localStorage.getItem('theme');
         document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
+
     if (loading) {
         return <Loading></Loading>
     }
+    
     const handleToggle = (e) => {
         if (e.target.checked) {
             setTheme('dark')
@@ -39,7 +41,7 @@ const Navbar = () => {
                         <NavLink className={({ isActive }) => isActive ? ' text-lg font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-lg '} to={'/need-volunteer'}>Need Volunteer</NavLink>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Volunteer Venue</a>
+                <Link to={'/'} className="btn btn-ghost text-xl">Volunteer Venue</Link>
             </div>
             <div className="navbar-center hidden lg:flex font-raleway">
                 <ul className="menu menu-horizontal gap-2 px-1">
@@ -65,7 +67,7 @@ const Navbar = () => {
                     user ? <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+                                <img title={user?.displayName} alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">

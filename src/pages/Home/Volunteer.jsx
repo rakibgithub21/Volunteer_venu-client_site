@@ -9,11 +9,15 @@ const Volunteer = ({ volunteer }) => {
         <div className="w-full font-roboto overflow-hidden  bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <img className=" w-full h-56" src={volunteer.thumbnail} alt="avatar" />
 
-            <div className="flex items-center px-6 py-3 bg-gray-900">
-                <MdOutlineCategory className='text-2xl text-rose-600' />
-
-                <h1 className="mx-3 font-raleway text-lg font-semibold text-white">{volunteer?.category}</h1>
+            <div className="bg-gray-900">
+                <h1 className="mx-3 px-2 pt-2 font-raleway text-lg font-semibold text-white">{volunteer?.title}</h1>
+                <div className="flex items-center px-2 py-2 ">
+                    <MdOutlineCategory className='text-xl text-rose-600' />
+                    <h1 className="mx-3 font-raleway text-lg font-semibold text-white">{volunteer?.category}</h1>
+                </div>
+                
             </div>
+            
 
             <div className="px-6 py-4 bg-slate-300">
                 <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{volunteer?.postTitle}</h1>
