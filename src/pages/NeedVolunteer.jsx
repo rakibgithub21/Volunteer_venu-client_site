@@ -2,11 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AllVolunteer from "../components/AllVolunteer";
 import Empty from "../components/Empty";
+import Loading from "../components/Loading";
 
 const NeedVolunteer = () => {
     const [allVolunteer, setAllVolunteer] = useState([])
    
-    const[search,setSearch]= useState('')
+    const [search, setSearch] = useState('')
+    const[loading,setLoading] = useState(true)
 
 
     useEffect(() => {
@@ -14,6 +16,7 @@ const NeedVolunteer = () => {
             try {
                 const response = await axios.get(`http://localhost:5000/all-volunteer?search=${search}`);
                 setAllVolunteer(response.data);
+                setLoading(false)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -21,6 +24,9 @@ const NeedVolunteer = () => {
 
         fetchData();
     }, [search]);
+    if (loading) {
+        return<Loading></Loading>
+    }
 
     if (allVolunteer.length === 0) {
         return <Empty></Empty>

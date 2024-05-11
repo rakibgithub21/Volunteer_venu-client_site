@@ -2,15 +2,22 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Volunteer from "./Volunteer";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 const VolunteerNeedsSection = () => {
+    const [loading, setLoading] = useState(true)
+    
     const[volunteerDatas,setVolunteerDatas] = useState([])
     useEffect(() => {
         axios.get('http://localhost:5000/volunteer')
             .then(res => {
-            setVolunteerDatas(res.data)
+                setVolunteerDatas(res.data)
+                setLoading(false)
         })
     }, [])
+    if (loading) {
+        return<Loading></Loading>
+    }
     return (
         <div>
             <div className="grid my-10 px-8 md:px-0 container mx-auto grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 lg:grid-cols-3">

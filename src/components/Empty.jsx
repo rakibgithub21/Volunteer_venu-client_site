@@ -6,7 +6,7 @@ const Empty = () => {
     return (
         <div className="flex justify-center items-center flex-col h-screen">
             <img className="w-[320px]" src={data} alt="" />
-            <Link to={'/'}>Go Back</Link>
+            <Link className="btn btn-secondary btn-outline" to={'/'}>Go Back</Link>
         </div>
     );
 };
