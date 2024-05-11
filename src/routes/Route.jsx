@@ -4,6 +4,7 @@ import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Main from "../layouts/Main";
 import NeedVolunteer from "../pages/NeedVolunteer";
+import AddVolunteer from "../pages/AddVolunteer";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: '/need-volunteer',
                 element:<NeedVolunteer></NeedVolunteer>
+            },
+            {
+                path: '/add-volunteer',
+                element:<AddVolunteer></AddVolunteer>
             }
         ]
     },
