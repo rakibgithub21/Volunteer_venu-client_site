@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
-    const { createUser, updateUserProfile,setUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile, setUser,setLoading } = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const formRef = useRef(null);
     const {
         register,
         handleSubmit,
@@ -19,13 +22,17 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                toast.success('Register Successfully')
                 updateUserProfile(name, photo)
                 setUser({ ...result?.user, photoURL: photo, displayName: name })
+                formRef.current.reset();
 
             })
 
-            .catch(err => {
-                console.log(err.message);
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message)
+                setLoading(false)
             })
     }
 
@@ -39,7 +46,7 @@ const Register = () => {
                         Get Your Free Account Now.
                     </p>
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
                         <div className='mt-4'>
                             <label
                                 className='block mb-2 text-sm md:text-lg font-medium text-gray-600 '
@@ -48,7 +55,8 @@ const Register = () => {
                                 Username
                             </label>
                             <input
-                                {...register("name", { required: true })}
+                            required
+                                {...register("name")}
                                 id='name'
                                 placeholder="Enter Your Name"
                                 autoComplete='name'
@@ -56,7 +64,7 @@ const Register = () => {
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='text'
                             />
-                            {errors.name && <span className="text-red-500">This field is required</span>}
+                           
                         </div>
                         <div className='mt-4'>
                             <label
@@ -66,7 +74,8 @@ const Register = () => {
                                 Photo URL
                             </label>
                             <input
-                                {...register("photo", { required: true })}
+                            required
+                                {...register("photo")}
                                 id='photo'
                                 placeholder="Enter Your Photo URL"
                                 autoComplete='photo'
@@ -74,7 +83,7 @@ const Register = () => {
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='text'
                             />
-                            {errors.photo && <span className="text-red-500">This field is required</span>}
+                           
                         </div>
                         <div className='mt-4'>
                             <label
@@ -84,7 +93,8 @@ const Register = () => {
                                 Email Address
                             </label>
                             <input
-                                {...register("email", { required: true })}
+                            required
+                                {...register("email")}
                                 placeholder="Enter Your Email Address"
                                 id='LoggingEmailAddress'
                                 autoComplete='email'
@@ -92,7 +102,7 @@ const Register = () => {
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='email'
                             />
-                            {errors.email && <span className="text-red-500">This field is required</span>}
+                            
                         </div>
 
                         <div className='mt-4'>
@@ -106,7 +116,13 @@ const Register = () => {
                             </div>
 
                             <input
-                                {...register("password", { required: true })}
+                            required
+                                {...register("password", { validate: {
+                                        minLength: value => value.length >= 6,
+                                        uppercase: value => /[A-Z]/.test(value),
+                                        lowercase: value => /[a-z]/.test(value)
+                                    }
+                                })}
                                 placeholder="Enter Your Password"
                                 id='loggingPassword'
                                 autoComplete='current-password'
@@ -114,15 +130,27 @@ const Register = () => {
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='password'
                             />
-                            {errors.password && <span className="text-red-500">This field is required</span>}
+                            
+                            {errors.password && errors.password.type === "minLength" && (
+                                <p className="text-red-500">Password must be at least 6 characters long</p>
+                            )}
+                            {errors.password && errors.password.type === "uppercase" && (
+                                <p className="text-red-500">Password must contain at least one capital letter</p>
+                            )}
+                            {errors.password && errors.password.type === "lowercase" && (
+                                <p className="text-red-500">Password must contain at least one lowercase letter</p>
+                            )}
                         </div>
                         <div className='mt-6'>
                             <button
                                 type='submit'
                                 className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
                             >
-                                Sign Up
+                                Register
                             </button>
+                            {
+                                error && <p className="text-red-500">{error}</p>
+                            }
                         </div>
                     </form>
 

@@ -2,12 +2,15 @@ import { Link } from 'react-router-dom';
 import gitbub from '../../assets/github.png';
 import google from '../../assets/google.png';
 import { useForm } from "react-hook-form"
-import { useContext } from "react"
+import { useContext, useRef, useState } from "react"
 
 import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from 'react-toastify';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn, setLoading } = useContext(AuthContext)
+    const formRef = useRef(null);
+    const [error, setError] = useState('')
     const {
         register,
         handleSubmit,
@@ -18,10 +21,14 @@ const Login = () => {
         const { email, password } = data;
         signIn(email, password)
             .then(result => {
+                toast.success('Login Successfully')
+                formRef.current.reset();
             console.log(result.user);
             })
             .catch(error => {
-            console.log(error.message);
+                console.log(error.message);
+                setError(error.message)
+                setLoading(false)
         })
     }
 
@@ -59,7 +66,7 @@ const Login = () => {
 
                     <span className='w-1/5 border-b border-slate-400 dark:border-gray-400 lg:w-1/4'></span>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
                     <div className='mt-4'>
                         <label
                             className='block mb-2 text-sm md:text-lg font-medium text-gray-600 '
@@ -105,8 +112,9 @@ const Login = () => {
                             type='submit'
                             className='w-full px-6 py-3 text-sm md:text-lg font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
                         >
-                            Sign In
+                            Login In
                         </button>
+                        {error && <p className='text-red-500'>{error}</p>}
                     </div>
                 </form>
                 <div className='flex items-center justify-between mt-4'>
