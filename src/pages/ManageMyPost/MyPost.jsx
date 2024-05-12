@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const MyPost = () => {
-    const{user}= useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const [myPost, setMyPost] = useState([])
-    
+
     useEffect(() => {
         getData()
     }, [user])
@@ -16,10 +17,44 @@ const MyPost = () => {
     const getData = async () => {
         axios(`http://localhost:5000/alls/mdrakibulislam.mailbox@gmail.com`)
             .then(res => {
-            setMyPost(res.data)
-        })
+                setMyPost(res.data)
+            })
     }
-console.log(myPost);
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/all/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            getData()
+                        }
+                    })
+                // Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                // });
+            }
+        });
+
+    }
+
+
+    console.log(myPost);
     return (
         <section className='container px-4 mx-auto pt-12'>
             <div className='flex items-center gap-x-3'>
@@ -78,14 +113,14 @@ console.log(myPost);
                                 <tbody className='bg-white divide-y divide-gray-200 '>
                                     {
                                         myPost.map(post => <tr
-                                        key={post._id}
+                                            key={post._id}
                                         >
                                             <td className='px-4 font-raleway py-4 text-sm text-gray-500  whitespace-nowrap'>
                                                 {post.title}
                                             </td>
 
                                             <td className='px-4 font-roboto py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                               {new Date(post.deadline).toLocaleDateString()}
+                                                {new Date(post.deadline).toLocaleDateString()}
                                             </td>
 
                                             <td className='px-4 font-raleway py-4 text-sm text-gray-500  whitespace-nowrap'>
@@ -97,13 +132,13 @@ console.log(myPost);
                                                         className='px-3 py-1 rounded-full text-blue-500 bg-blue-100/60
                            text-xs'
                                                     >
-                                                       {post.category}
+                                                        {post.category}
                                                     </p>
                                                 </div>
                                             </td>
                                             <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                 <div className='flex items-center gap-x-6'>
-                                                    <button className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
+                                                    <button onClick={() => handleDelete(post._id)} className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
                                                         <svg
                                                             xmlns='http://www.w3.org/2000/svg'
                                                             fill='none'
@@ -139,7 +174,7 @@ console.log(myPost);
                                                 </div>
                                             </td>
                                         </tr>)
-                                   }
+                                    }
                                 </tbody>
                             </table>
                         </div>
