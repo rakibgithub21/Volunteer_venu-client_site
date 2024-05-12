@@ -40,7 +40,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/update/:id',
-                element:<Update></Update>
+                element: <Update></Update>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
             },
             {
                 path: '/volunteer-details/:id',
