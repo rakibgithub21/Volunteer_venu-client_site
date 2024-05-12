@@ -36,7 +36,7 @@ const BeAVolunteer = () => {
                     {/* category */}
                     <div className="mb-4 flex-auto ">
                         <label htmlFor="category" className="block font-semibold mb-1">Category:</label>
-                        <select required name='category' id="category" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
+                        <select readOnly defaultValue={datas.category} name='category' id="category" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
                             <option value="">Select Category</option>
                             <option value="Healthcare">Healthcare</option>
                             <option value="Education">Education</option>
@@ -48,7 +48,7 @@ const BeAVolunteer = () => {
                     {/* location */}
                     <div className="mb-4 flex-auto">
                         <label htmlFor="location" className="block font-semibold mb-1">Location:</label>
-                        <input required name='location' type="text" id="location" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
+                        <input readOnly defaultValue={datas.location} name='location' type="text" id="location" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@ const BeAVolunteer = () => {
                     {/* No.V needs */}
                     <div className="mb-4 flex-auto">
                         <label htmlFor="volunteersNeeded" className="block font-semibold mb-1">No. of Volunteers Needed:</label>
-                        <input required name='volunteerNeed' type="number" id="volunteersNeeded" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
+                        <input defaultValue={datas.volunteerNeed} readOnly name='volunteerNeed' type="number" id="volunteersNeeded" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
                     </div>
                     {/* date picker */}
                     <div className="mb-4 ">
