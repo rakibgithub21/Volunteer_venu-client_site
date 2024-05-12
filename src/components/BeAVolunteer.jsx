@@ -1,16 +1,60 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 
 const BeAVolunteer = () => {
+    const {user} = useContext(AuthContext)
     const datas = useLoaderData()
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
     console.log(datas);
+
+    const handleBeAVolunteer = (e) => {
+        e.preventDefault()
+        if (user?.email === datas.postBy.email) {
+            return alert('Action Not Permitted')
+        }
+        const form = e.target;
+        const thumbnail = form.thumbnail.value;
+        const title = form.title.value;
+        const description = form.description.value;
+        const category = form.category.value;
+        const location = form.location.value;
+        const volunteerNeed = form.volunteerNeed.value;
+        const OrganizerName = form.OrganizerName.value;
+        const organizerEmail = form.organizerEmail.value;
+        const volunteerName = form.volunteerName.value;
+        const volunteerEmail = form.volunteerEmail.value;
+        const status = form.status.value;
+        const suggestion = form.suggestion.value;
+        const allData = {
+            thumbnail,
+            title,
+            description,
+            category,
+            location,
+            volunteerNeed,
+            deadline,
+            postBy: {
+               name: OrganizerName,
+               email: organizerEmail
+            },
+            volunteerDetails: {
+                email: volunteerEmail,
+                name: volunteerName
+            },
+            status,
+            suggestion
+        }
+        console.table(allData);
+        
+
+    }
     return (
         <div className="container mx-auto px-4 md:px-0">
-            <form >
+            <form onSubmit={handleBeAVolunteer}>
                 {/* thumbnail */}
                 <div className="md:flex md:gap-4">
                     <div className="mb-4 flex-auto">
@@ -36,7 +80,7 @@ const BeAVolunteer = () => {
                     {/* category */}
                     <div className="mb-4 flex-auto ">
                         <label htmlFor="category" className="block font-semibold mb-1">Category:</label>
-                        <select readOnly defaultValue={datas.category} name='category' id="category" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
+                        <select disabled defaultValue={datas.category} name='category' id="category" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
                             <option value="">Select Category</option>
                             <option value="Healthcare">Healthcare</option>
                             <option value="Education">Education</option>
@@ -74,14 +118,39 @@ const BeAVolunteer = () => {
                     {/* Organizer Name */}
                     <div className="mb-4 flex-auto">
                         <label className="block font-semibold mb-1">Organizer Name:</label>
-                        <input required name='OrganizerName' readOnly type="text" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
+                        <input defaultValue={datas.postBy.name} required name='OrganizerName' readOnly type="text" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
                     </div>
 
 
                     {/* Organizer Email */}
                     <div className="mb-4 flex-auto">
                         <label className="block font-semibold mb-1">Organizer Email:</label>
-                        <input required name='organizerEmail' readOnly type="email" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
+                        <input defaultValue={datas.postBy.email} required name='organizerEmail' readOnly type="email" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
+                    </div>
+                </div>
+                <div className="mt-2">
+                    <h3 className="text-3xl font-medium font-roboto text-center">Volunteer Details</h3>
+                    <div className="grid max-w-3xl mx-auto my-10 shadow-xl border border-rose-500 p-4 grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                        <div>
+                            <label className="text-gray-700 dark:text-gray-200" htmlFor="username">Volunteer Name</label>
+                            <input defaultValue={user?.displayName} id="username" name="volunteerName" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        </div>
+
+                        <div>
+                            <label className="text-gray-700 dark:text-gray-200" >Volunteer Email Address</label>
+                            <input defaultValue={user?.email} name="volunteerEmail" id="emailAddress" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        </div>
+
+                        <div>
+                            <label className="text-gray-700 dark:text-gray-200" htmlFor="status">Status</label>
+                            <input name="status"  readOnly defaultValue={'requested'} id="status" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                        </div>
+                        <div>
+                            <label className="text-gray-700 dark:text-gray-200" htmlFor="suggestion">Suggestion</label>
+                            <textarea required className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" name="suggestion" id="suggestion"></textarea>
+                       </div>
+
+                        
                     </div>
                 </div>
 
