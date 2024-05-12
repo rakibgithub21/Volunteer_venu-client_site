@@ -55,15 +55,18 @@ console.log(layout);
                     <input name="search" className="input input-bordered join-item" placeholder="Search" />
                     <button className="btn join-item rounded-r-full">Search</button>
                 </form>
-                <button onClick={() => setLayout(!layout)}>
-                    {
-                        layout ? <GiHamburgerMenu className="text-2xl" /> : <BsGrid3X3GapFill className="text-2xl" />
-                    }
-                    
-                    
+
+                <button onClick={()=>setLayout(true)}>
+                    <BsGrid3X3GapFill className="text-2xl" />
                 </button>
+
+                <button onClick={() => setLayout(false)}>
+                    <GiHamburgerMenu className="text-2xl" />
+                </button>
+
+
             </div>
-            <div className={`${!layout &&'hidden'} grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-3`}>
+            <div className={`${!layout &&'hidden'} grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}>
                 {
                     allVolunteer.map(volunteer => <AllVolunteer
                         key={volunteer._id}
