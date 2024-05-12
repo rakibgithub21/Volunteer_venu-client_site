@@ -55,7 +55,7 @@ const MyPost = () => {
     }
 
 
-    console.log(myPost);
+    // console.log(myPost);
     return (
         <section className='container px-4 mx-auto pt-12'>
             <div className='flex items-center gap-x-3'>
