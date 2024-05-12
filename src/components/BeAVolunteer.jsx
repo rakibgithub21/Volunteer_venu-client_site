@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
 
 
 const BeAVolunteer = () => {
@@ -30,6 +31,7 @@ const BeAVolunteer = () => {
         const status = form.status.value;
         const suggestion = form.suggestion.value;
         const allData = {
+            post_id:datas._id,
             thumbnail,
             title,
             description,
@@ -48,7 +50,10 @@ const BeAVolunteer = () => {
             status,
             suggestion
         }
-        console.table(allData);
+        axios.post('http://localhost:5000/beVolunteer', allData)
+            .then(res => {
+            console.log(res.data);
+        })
         
 
     }
@@ -154,7 +159,7 @@ const BeAVolunteer = () => {
                     </div>
                 </div>
 
-                <input type="submit" className='btn btn-outline w-full btn-ghost' value="POST" />
+                <input type="submit" className='btn btn-outline w-full btn-ghost' value="Request" />
             </form>
         </div>
     );

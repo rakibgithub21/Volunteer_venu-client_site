@@ -1,7 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import MyPost from './MyPost';
-import { useState } from 'react';
+import MyRequest from './MyRequest';
 const ManageMyPost = () => {
 
    
@@ -25,7 +25,7 @@ const ManageMyPost = () => {
                     <MyPost></MyPost>
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <MyRequest></MyRequest>
                 </TabPanel>
            </div>
         </Tabs>

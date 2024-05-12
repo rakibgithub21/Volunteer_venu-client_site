@@ -16,7 +16,7 @@ const MyPost = () => {
 
 
     const getData = async () => {
-        axios(`http://localhost:5000/alls/mdrakibulislam.mailbox@gmail.com`)
+        axios(`http://localhost:5000/alls/${user?.email}`)
             .then(res => {
                 setMyPost(res.data)
             })

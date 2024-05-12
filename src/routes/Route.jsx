@@ -9,11 +9,13 @@ import DetailsValunteer from "../components/DetailsValunteer";
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
 import Update from "../pages/ManageMyPost/Update";
 import BeAVolunteer from "../components/BeAVolunteer";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

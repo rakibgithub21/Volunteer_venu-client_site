@@ -58,7 +58,7 @@ const Update = () => {
                     <div className="absolute flex items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)] rounded-lg   ">
                         <div className='text-white p-4 font-raleway space-y-4'>
                             <p className='text-xl'> Update Your Volunteer Need Post!</p>
-                            <p>Welcome to the Update Page! Here, you can easily modify your volunteer opportunity post to ensure it's always accurate and engaging </p>
+                            <p>Welcome to the Update Page! Here, you can easily modify your volunteer opportunity post to ensure it iss always accurate and engaging </p>
                         </div>
                     </div>
 
