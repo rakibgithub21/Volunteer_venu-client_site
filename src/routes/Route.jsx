@@ -8,6 +8,7 @@ import AddVolunteer from "../pages/AddVolunteer";
 import DetailsValunteer from "../components/DetailsValunteer";
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
 import Update from "../pages/ManageMyPost/Update";
+import BeAVolunteer from "../components/BeAVolunteer";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,12 @@ export const router = createBrowserRouter([
                 element: <DetailsValunteer></DetailsValunteer>,
                 loader: ({params}) => fetch(`http://localhost:5000/all/${params.id}`)
             },
+            {
+                path: '/be-volunteer/:id',
+                element: <BeAVolunteer></BeAVolunteer>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
+                
+            }
         ]
     },
 ]);

@@ -1,8 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsValunteer = () => {
     const data = useLoaderData()
-    const { postBy, volunteerNeed, title, category, thumbnail, deadline, description, location } = data;
+    const {_id ,postBy, volunteerNeed, title, category, thumbnail, deadline, description, location } = data;
     console.log(data);
     return (
         <div className="max-w-5xl mx-auto overflow-hidden font-raleway bg-white rounded-lg shadow-md mt-5">
@@ -20,8 +20,10 @@ const DetailsValunteer = () => {
 
                 <div className="flex justify-between items-center">
                     
-                    <div >
-                        <button className="btn btn-outline btn-success">Be A Volunteer</button>
+                    <div className="mt-5" >
+                        <Link to={`/be-volunteer/${_id}`}>
+                            <button className="btn btn-outline btn-success">Be A Volunteer</button>
+                        </Link>
                     </div>
 
                     <div className="mt-4">
