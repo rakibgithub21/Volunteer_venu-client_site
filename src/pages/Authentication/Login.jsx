@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
-    const { signIn, setLoading } = useContext(AuthContext)
+    const { signIn, setLoading,signInWithGoogle } = useContext(AuthContext)
     const formRef = useRef(null);
     const [error, setError] = useState('')
     const location = useLocation();
@@ -37,6 +37,21 @@ const Login = () => {
             })
     }
 
+    const loginWithGoogle = () => {
+        signInWithGoogle()
+            .then(() => {
+                toast.success('Google Login SuccessFully')
+                navigate(from, { replace: true })
+            })
+            .catch(() => {
+                setError(error.message)
+                setLoading(false)
+            })
+
+
+    }
+
+
     return (
         <div className=' flex my-10 justify-center items-center min-h-[calc(100vh-306px)]'>
             <Helmet>
@@ -46,9 +61,8 @@ const Login = () => {
 
                 <h3 className='text-2xl md:text-3xl font-bold font-roboto text-gray-600 '>Welcome Back!</h3>
                 <p className='text-lg md:text-xl text-gray-500 font-raleway mt-1'>Please Login Here...</p>
-                <div className='flex cursor-pointer bg-slate-300 items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                <div onClick={loginWithGoogle} className='flex cursor-pointer bg-slate-300 items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
                     <div className='px-4 py-2'>
-
                         <img className='h-10 w-10' src={google} alt="" />
                     </div>
 
