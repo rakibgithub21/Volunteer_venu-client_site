@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -9,8 +9,8 @@ import updateBg from '../../assets/volunteering-background.webp';
 import { Helmet } from "react-helmet-async";
 
 const Update = () => {
-    
-    const{user} = useContext(AuthContext)
+
+    const { user } = useContext(AuthContext)
 
     const Posts = useLoaderData()
 
@@ -18,6 +18,8 @@ const Update = () => {
 
     const [deadline, setStartDate] = useState(new Date(Posts.deadline) || new Date());
 
+    const navigate = useNavigate()
+    
     const handleUpdate = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -45,8 +47,9 @@ const Update = () => {
                         text: "Update Successfully",
                         icon: "success"
                     });
+                    navigate('/manage-post')
                 }
-        })
+            })
     }
 
 
@@ -121,7 +124,7 @@ const Update = () => {
                             <label htmlFor="deadline" className="block font-semibold mb-1">Deadline:</label>
                             <DatePicker
                                 className="border p-2 rounded-md"
-                                
+
                                 selected={deadline} onChange={(date) => setStartDate(date)} />
                         </div>
                     </div>
