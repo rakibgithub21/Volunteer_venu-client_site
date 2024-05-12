@@ -10,6 +10,7 @@ import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
 import Update from "../pages/ManageMyPost/Update";
 import BeAVolunteer from "../components/BeAVolunteer";
 import ErrorPage from "../pages/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -35,25 +36,25 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/manage-post',
-                element:<ManageMyPost></ManageMyPost>
+                element: <PrivateRoute><ManageMyPost></ManageMyPost></PrivateRoute>
             },
             {
                 path: '/add-volunteer',
-                element:<AddVolunteer></AddVolunteer>
+                element: <PrivateRoute><AddVolunteer></AddVolunteer></PrivateRoute>
             },
             {
                 path: '/update/:id',
-                element: <Update></Update>,
+                element: <PrivateRoute><Update></Update></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
             },
             {
                 path: '/volunteer-details/:id',
-                element: <DetailsValunteer></DetailsValunteer>,
+                element: <PrivateRoute><DetailsValunteer></DetailsValunteer></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/all/${params.id}`)
             },
             {
                 path: '/be-volunteer/:id',
-                element: <BeAVolunteer></BeAVolunteer>,
+                element: <PrivateRoute><BeAVolunteer></BeAVolunteer></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
                 
             }

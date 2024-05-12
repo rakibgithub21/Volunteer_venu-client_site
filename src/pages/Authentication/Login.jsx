@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import gitbub from '../../assets/github.png';
 import google from '../../assets/google.png';
 import { useForm } from "react-hook-form"
@@ -11,6 +11,9 @@ const Login = () => {
     const { signIn, setLoading } = useContext(AuthContext)
     const formRef = useRef(null);
     const [error, setError] = useState('')
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location?.state || '/'
     const {
         register,
         handleSubmit,
@@ -23,13 +26,14 @@ const Login = () => {
             .then(result => {
                 toast.success('Login Successfully')
                 formRef.current.reset();
-            console.log(result.user);
+                navigate(from, { replace: true })
+                console.log(result.user);
             })
             .catch(error => {
                 console.log(error.message);
                 setError(error.message)
                 setLoading(false)
-        })
+            })
     }
 
     return (
@@ -129,12 +133,12 @@ const Login = () => {
 
                     <span className='w-1/5 border-b border-slate-400  md:w-1/4'></span>
                 </div>
-                
 
-                
 
-               
-                
+
+
+
+
             </div>
             {/* <div className='md:col-span-1'>
                 <img src={loginImage} alt="" />
