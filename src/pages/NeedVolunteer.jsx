@@ -4,13 +4,18 @@ import AllVolunteer from "../components/AllVolunteer";
 import Empty from "../components/Empty";
 import Loading from "../components/Loading";
 import { Helmet } from "react-helmet-async";
+import VolunteerTable from "../components/VolunteerTable";
+import { BsGrid3X3GapFill } from "react-icons/bs";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const NeedVolunteer = () => {
     const [allVolunteer, setAllVolunteer] = useState([])
    
     const [search, setSearch] = useState('')
-    const[loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
+    const [layout, setLayout] = useState(true);
 
+console.log(layout);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -45,19 +50,34 @@ const NeedVolunteer = () => {
                 <title>Volunteer Venue || Need Volunteer</title>
 
             </Helmet>
-            <div className="text-center mt-5">
+            <div className="text-center mt-5 flex justify-center items-center gap-5">
                 <form onSubmit={handleSearch} className="join">
                     <input name="search" className="input input-bordered join-item" placeholder="Search" />
                     <button className="btn join-item rounded-r-full">Search</button>
                 </form>
+                <button onClick={() => setLayout(!layout)}>
+                    {
+                        layout ? <GiHamburgerMenu className="text-2xl" /> : <BsGrid3X3GapFill className="text-2xl" />
+                    }
+                    
+                    
+                </button>
             </div>
-            <div className="grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-3">
+            <div className={`${!layout &&'hidden'} grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-3`}>
                 {
                     allVolunteer.map(volunteer => <AllVolunteer
                         key={volunteer._id}
                         volunteer={volunteer}
+                        layout={layout}
                     ></AllVolunteer>)
                 }
+            </div>
+
+            <div>
+                <VolunteerTable
+                    allVolunteer={allVolunteer}
+                    layout={layout}
+                ></VolunteerTable>
             </div>
         </div>
     );

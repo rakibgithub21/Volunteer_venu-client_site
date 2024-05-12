@@ -2,7 +2,6 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Loading from "../../components/Loading";
-import { Link } from "react-router-dom";
 import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
