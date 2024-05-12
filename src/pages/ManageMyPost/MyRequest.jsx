@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Loading from "../../components/Loading";
 import { Link } from "react-router-dom";
 import { FaXmark } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 
 const MyRequest = () => {
@@ -26,12 +27,32 @@ console.log(myRequest);
 
 
     const handleCancell = (id) => {
-        axios.delete(`http://localhost:5000/beVolunteer/${id}`)
-            .then(res => {
-                if (res.data.deletedCount > 0) {
-                    getData()
-                }
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/beVolunteer/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Data has been deleted.",
+                                icon: "success"
+                            });
+                            getData()
+                        }
+                    })
+
+            }
+        });
+       
         
     }
 
