@@ -2,6 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import MyPost from './MyPost';
 import MyRequest from './MyRequest';
+import { Helmet } from 'react-helmet-async';
 const ManageMyPost = () => {
 
    
@@ -12,6 +13,7 @@ const ManageMyPost = () => {
 
     return (
         <Tabs>
+           
             <div className='container mx-auto'>
                 
                 <div className='flex items-center justify-center'>

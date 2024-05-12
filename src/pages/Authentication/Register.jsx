@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -38,6 +39,9 @@ const Register = () => {
 
     return (
         <div className='flex my-10 justify-center items-center min-h-[calc(100vh-306px)]'>
+            <Helmet>
+                <title>Volunteer Venue || Register</title>
+            </Helmet>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-slate-200 rounded-lg shadow-lg  lg:max-w-4xl '>
                 <div className='w-full px-6 py-8 md:px-8 '>
 

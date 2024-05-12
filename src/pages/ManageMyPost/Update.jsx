@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import updateBg from '../../assets/volunteering-background.webp';
+import { Helmet } from "react-helmet-async";
 
 const Update = () => {
     
@@ -52,6 +53,10 @@ const Update = () => {
 
     return (
         <div className='grid container gap-10 mx-auto p-4 lg:grid-cols-5'>
+            <Helmet>
+                <title>Volunteer Venue || Update</title>
+
+            </Helmet>
             <div className=' hidden lg:flex h-full  items-center lg:col-span-2'>
                 <div className="carousel-item flex  relative w-full">
                     <img src={updateBg} className="w-full  rounded-lg" />

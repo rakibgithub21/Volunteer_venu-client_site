@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AllVolunteer from "../components/AllVolunteer";
 import Empty from "../components/Empty";
 import Loading from "../components/Loading";
+import { Helmet } from "react-helmet-async";
 
 const NeedVolunteer = () => {
     const [allVolunteer, setAllVolunteer] = useState([])
@@ -40,6 +41,10 @@ const NeedVolunteer = () => {
     console.log(search);
     return (
         <div>
+            <Helmet>
+                <title>Volunteer Venue || Need Volunteer</title>
+
+            </Helmet>
             <div className="text-center mt-5">
                 <form onSubmit={handleSearch} className="join">
                     <input name="search" className="input input-bordered join-item" placeholder="Search" />

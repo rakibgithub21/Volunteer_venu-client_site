@@ -6,6 +6,7 @@ import { useContext, useRef, useState } from "react"
 
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { signIn, setLoading } = useContext(AuthContext)
@@ -38,6 +39,9 @@ const Login = () => {
 
     return (
         <div className=' flex my-10 justify-center items-center min-h-[calc(100vh-306px)]'>
+            <Helmet>
+                <title>Volunteer Venue || Login</title>
+            </Helmet>
             <div className='w-2/3 lg:w-3/6 mx-auto bg-slate-200 rounded-lg shadow-lg p-4'>
 
                 <h3 className='text-2xl md:text-3xl font-bold font-roboto text-gray-600 '>Welcome Back!</h3>

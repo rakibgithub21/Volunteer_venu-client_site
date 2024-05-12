@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const MyPost = () => {
@@ -58,6 +59,9 @@ const MyPost = () => {
     // console.log(myPost);
     return (
         <section className='container px-4 mx-auto pt-12'>
+            <Helmet>
+                <title>Volunteer Venue || My Volunteer Post</title>
+            </Helmet>
             <div className='flex items-center gap-x-3'>
                 <h2 className='text-lg font-medium text-gray-800 '>My Need Volunteer Post</h2>
 

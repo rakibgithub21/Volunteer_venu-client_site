@@ -5,6 +5,7 @@ import Loading from "../../components/Loading";
 import { Link } from "react-router-dom";
 import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const MyRequest = () => {
@@ -65,6 +66,9 @@ console.log(myRequest);
 
     return (
         <section className='container px-4 mx-auto pt-12'>
+            <Helmet>
+                <title>Volunteer Venue || My Volunteer Request</title>
+            </Helmet>
             <div className='flex items-center gap-x-3'>
                 <h2 className='text-lg font-medium text-gray-800 '>My Need Volunteer Post</h2>
 
