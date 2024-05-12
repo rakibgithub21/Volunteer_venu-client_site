@@ -24,6 +24,18 @@ console.log(myRequest);
             })
     }
 
+
+    const handleCancell = (id) => {
+        axios.delete(`http://localhost:5000/beVolunteer/${id}`)
+            .then(res => {
+                if (res.data.deletedCount > 0) {
+                    getData()
+                }
+            })
+        
+    }
+
+
     if (loading) {
         return<Loading></Loading>
     }
@@ -113,7 +125,7 @@ console.log(myRequest);
                                             </td>
                                             <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                 <div className='flex items-center gap-x-6'>
-                                                    <button  className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
+                                                    <button onClick={()=>handleCancell(post._id)} className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
                                                         <FaXmark className="text-2xl border hover:rounded-full hover:border-red-400 duration-200 transition-all" />
                                                     </button>
 
