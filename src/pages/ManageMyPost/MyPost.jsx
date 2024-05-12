@@ -63,7 +63,7 @@ const MyPost = () => {
                 <title>Volunteer Venue || My Volunteer Post</title>
             </Helmet>
             <div className='flex items-center gap-x-3'>
-                <h2 className='text-lg font-medium text-gray-800 '>My Need Volunteer Post</h2>
+                <h2 className='text-lg font-medium text-slate-500 '>My Need Volunteer Post</h2>
 
                 <span className='px-3 font-roboto py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
                     {myPost.length}

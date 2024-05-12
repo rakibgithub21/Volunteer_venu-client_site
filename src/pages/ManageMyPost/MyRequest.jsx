@@ -10,13 +10,13 @@ import { Helmet } from "react-helmet-async";
 const MyRequest = () => {
     const { user } = useContext(AuthContext)
     const [myRequest, setMyRequest] = useState()
-    const[loading,setLoading] = useState(true)
-    
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         getData()
     }, [user])
 
-console.log(myRequest);
+    console.log(myRequest);
     const getData = async () => {
         axios(`http://localhost:5000/beVolunteer/${user?.email}`)
             .then(res => {
@@ -52,13 +52,13 @@ console.log(myRequest);
 
             }
         });
-       
-        
+
+
     }
 
 
     if (loading) {
-        return<Loading></Loading>
+        return <Loading></Loading>
     }
 
     console.log(loading);
@@ -69,7 +69,7 @@ console.log(myRequest);
                 <title>Volunteer Venue || My Volunteer Request</title>
             </Helmet>
             <div className='flex items-center gap-x-3'>
-                <h2 className='text-lg font-medium text-gray-800 '>My Need Volunteer Post</h2>
+                <h2 className='text-lg font-medium text-slate-500 '>My Need Volunteer Post</h2>
 
                 <span className='px-3 font-roboto py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
                     {myRequest.length}
@@ -149,11 +149,11 @@ console.log(myRequest);
                                             </td>
                                             <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                 <div className='flex items-center gap-x-6'>
-                                                    <button onClick={()=>handleCancell(post._id)} className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
+                                                    <button onClick={() => handleCancell(post._id)} className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'>
                                                         <FaXmark className="text-2xl border hover:rounded-full hover:border-red-400 duration-200 transition-all" />
                                                     </button>
 
-                                                    
+
                                                 </div>
                                             </td>
                                         </tr>)
