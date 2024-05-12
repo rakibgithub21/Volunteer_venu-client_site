@@ -51,7 +51,7 @@ const Faq = () => {
 
                     </div>
                 </div>
-                <div className={`${showMore ? 'block' :'hidden'}`}>
+                <div className={`${showMore ? 'block' :'hidden'} space-y-2`}>
                     <div className="collapse collapse-arrow bg-base-200">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-medium">

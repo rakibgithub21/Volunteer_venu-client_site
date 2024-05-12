@@ -76,7 +76,7 @@ const Navbar = () => {
                                      Add Volunteer
                                 </Link>
                             </li>
-                            <li><a>Manage My Post</a></li>
+                            <li><Link to={'/manage-post'}>Manage My Post</Link></li>
                             <li>
                                 <button onClick={logOut} className=" btn-outline  btn-error">Logout</button></li>
                         </ul>
