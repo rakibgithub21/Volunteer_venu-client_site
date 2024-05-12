@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import updateBg from '../../assets/volunteering-background.webp';
 
 const Update = () => {
     
@@ -53,7 +54,7 @@ const Update = () => {
         <div className='grid container gap-10 mx-auto p-4 lg:grid-cols-5'>
             <div className=' hidden lg:flex h-full  items-center lg:col-span-2'>
                 <div className="carousel-item flex  relative w-full">
-                    {/* <img src className="w-full  rounded-lg" /> */}
+                    <img src={updateBg} className="w-full  rounded-lg" />
                     <div className="absolute flex items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)] rounded-lg   ">
                         <div className='text-white p-4 font-raleway space-y-4'>
                             <p className='text-xl'> Update Your Volunteer Need Post!</p>
