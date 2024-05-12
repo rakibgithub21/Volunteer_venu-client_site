@@ -4,15 +4,23 @@ import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const BeAVolunteer = () => {
     const {user} = useContext(AuthContext)
     const datas = useLoaderData()
+    
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
-    console.log(datas);
 
-    const handleBeAVolunteer = (e) => {
+
+
+
+
+
+
+
+    const handleBeAVolunteer =  (e) => {
         e.preventDefault()
         if (user?.email === datas.postBy.email) {
             return alert('Action Not Permitted')
@@ -23,7 +31,7 @@ const BeAVolunteer = () => {
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteerNeed = form.volunteerNeed.value;
+        const volunteerNeed = parseInt(form.volunteerNeed.value);
         const OrganizerName = form.OrganizerName.value;
         const organizerEmail = form.organizerEmail.value;
         const volunteerName = form.volunteerName.value;
@@ -52,7 +60,19 @@ const BeAVolunteer = () => {
         }
         axios.post('http://localhost:5000/beVolunteer', allData)
             .then(res => {
-            console.log(res.data);
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: "REQUEST DONE?",
+                        text: "Your Request has been done",
+                        icon: "success"
+                    });
+
+                    axios.patch(`http://localhost:5000/all/${datas._id}`) 
+                        .then(res => {
+                        console.log(res.data);
+                    })
+                }
         })
         
 
@@ -143,7 +163,7 @@ const BeAVolunteer = () => {
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" >Volunteer Email Address</label>
-                            <input defaultValue={user?.email} name="volunteerEmail" id="emailAddress" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input defaultValue={user?.email} readOnly name="volunteerEmail" id="emailAddress" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
 
                         <div>

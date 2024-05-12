@@ -11,13 +11,17 @@ const AddVolunteer = () => {
     const [deadline, setStartDate] = useState(new Date());
     const handlePostButton = (e) => {
         e.preventDefault()
+        
         const form = e.target;
         const thumbnail = form.thumbnail.value;
         const title = form.title.value;
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteerNeed = form.volunteerNeed.value;
+        const volunteerNeed = parseInt(form.volunteerNeed.value);
+        if (volunteerNeed === 0) {
+            return alert('0 is not allowed')
+        }
         const organizerName = user?.displayName;
         const organizerEmail = user?.email;
         const organizerPhoto = user?.photoURL;
