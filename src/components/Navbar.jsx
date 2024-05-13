@@ -68,7 +68,7 @@ const Navbar = () => {
                         user ? <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    <img title={user?.displayName} alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+                                    <img referrerPolicy='no-referrer' title={user?.displayName} alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-[100] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
