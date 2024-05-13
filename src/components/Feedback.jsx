@@ -18,11 +18,11 @@ const Feedback = () => {
             comment
 
         }
-        console.log(post);
+        // console.log(post);
 
     }
 
-    console.log(date);
+    // console.log(date);
     return (
         <section className="py-6 bg-gradient-to-r from-rose-100 to-red-50 mt-10 rounded-lg  raleway">
             <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">

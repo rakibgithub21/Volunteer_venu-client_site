@@ -19,7 +19,7 @@ const Update = () => {
     const [deadline, setStartDate] = useState(new Date(Posts.deadline) || new Date());
 
     const navigate = useNavigate()
-    
+
     const handleUpdate = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -38,9 +38,9 @@ const Update = () => {
             photo: organizerPhoto
         }
         const allData = { thumbnail, title, description, deadline, category, location, volunteerNeed, postBy }
-        axios.put(` http://localhost:5000/all/${Posts._id}`, allData)
+        axios.put(` https://b9-a11-serversite.vercel.app/all/${Posts._id}`, allData)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Success",

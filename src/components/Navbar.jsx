@@ -2,11 +2,22 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Loading from "./Loading";
+import axios from "axios";
 
 
 const Navbar = () => {
     const { user, loading, logOut } = useContext(AuthContext)
-    
+    const handleLogout = () => {
+        logOut()
+            .then(response => {
+                axios('https://b9-a11-serversite.vercel.app/logout', {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            })
+    }
     const [theme, setTheme] = useState('light');
 
     useEffect(() => {
@@ -17,7 +28,7 @@ const Navbar = () => {
     if (loading) {
         return <Loading></Loading>
     }
-    
+
     const handleToggle = (e) => {
         if (e.target.checked) {
             setTheme('dark')
@@ -38,17 +49,31 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52">
-                            <NavLink className={({ isActive }) => isActive ? ' text-lg font-medium text-[#0aa9be] underline rounded' : 'text-lg hover:text-rose-500 '} to={'/'}>Home</NavLink>
-                            <NavLink className={({ isActive }) => isActive ? ' text-lg font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-lg '} to={'/need-volunteer'}>Need Volunteer</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'text-sm hover:text-rose-500 '} to={'/'}>Home</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/need-volunteer'}>Need Volunteer</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/add-volunteer'}> Add Volunteer</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/need-volunteer'}>Manage My Post</NavLink>
                         </ul>
                     </div>
                     <Link to={'/'} className="btn btn-ghost text-xl">Volunteer Venue</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex font-raleway">
-                    <ul className="menu menu-horizontal gap-2 px-1">
-                        <NavLink  className={({ isActive }) => isActive ? 'border-2 font-semibold  text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/'}>Home</NavLink>
-                        <NavLink  className={({ isActive }) => isActive ? 'border-2 font-semibold   text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/need-volunteer'}>Need Volunteer</NavLink>
-
+                    <ul className="menu menu-horizontal items-center gap-2 px-1">
+                        <NavLink className={({ isActive }) => isActive ? 'border-2 font-semibold  text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/'}>Home</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'border-2 font-semibold   text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/need-volunteer'}>Need Volunteer</NavLink>
+                        {
+                            user && <div className="dropdown">
+                                <div tabIndex={0} role="button" className=" bg-base-300 m-1">My Profile</div>
+                                <ul tabIndex={0} className="dropdown-content space-y-2 bg-base-200 border border-[#a3da5aee]  z-[100] menu p-2   rounded-box w-52">
+                                    <li>
+                                        <NavLink className={({ isActive }) => isActive ? 'justify-between border border-[#a3da5aee]' : 'justify-between'} to={'/add-volunteer'} >
+                                            Add Volunteer
+                                        </NavLink>
+                                    </li>
+                                    <li><NavLink className={({ isActive }) => isActive ? 'border border-[#a3da5aee]' : 'border'} to={'/manage-post'}>Manage My Post</NavLink></li>
+                                </ul>
+                            </div>
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end  gap-2">
@@ -72,14 +97,10 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-[100] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                
                                 <li>
-                                    <Link to={'/add-volunteer'} className="justify-between">
-                                        Add Volunteer
-                                    </Link>
+                                    <button onClick={handleLogout} className=" btn-outline text-lg btn-error">Logout</button>
                                 </li>
-                                <li><Link to={'/manage-post'}>Manage My Post</Link></li>
-                                <li>
-                                    <button onClick={logOut} className=" btn-outline  btn-error">Logout</button></li>
                             </ul>
                         </div> : <Link to={'/login'} className="btn btn-success">Login</Link>
                     }
@@ -89,7 +110,7 @@ const Navbar = () => {
 
                 </div>
             </div>
-       </div>
+        </div>
     );
 };
 

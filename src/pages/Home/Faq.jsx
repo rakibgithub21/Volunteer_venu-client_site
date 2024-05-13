@@ -4,7 +4,7 @@ import { useState } from 'react';
 const Faq = () => {
 
     const [showMore, setShowMore] = useState(false)
-    console.log(showMore);
+    // console.log(showMore);
 
     return (
         <div className='grid lg:grid-cols-5 gap-5 mt-20 mb-20 px-2'>

@@ -27,13 +27,13 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 // cookie
-                axios.post('http://localhost:5000/jwt', {
+                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                     })
                 // --------------
 
@@ -43,7 +43,7 @@ const Login = () => {
                 // console.log(result.user.email);
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 setError(error.message)
                 setLoading(false)
             })
@@ -53,13 +53,13 @@ const Login = () => {
         signInWithGoogle()
             .then((result) => {
                 // cookie
-                axios.post('http://localhost:5000/jwt', {
+                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                     })
                 // -------------
 
@@ -80,13 +80,13 @@ const Login = () => {
         githubLogin()
             .then((result) => {
                 // cookie
-                axios.post('http://localhost:5000/jwt', {
+                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                     })
                 // -------------------
 
@@ -94,7 +94,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
                 setLoading(false)
                 setError(error.message)
             })

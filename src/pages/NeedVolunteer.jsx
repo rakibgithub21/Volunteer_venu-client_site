@@ -10,17 +10,17 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const NeedVolunteer = () => {
     const [allVolunteer, setAllVolunteer] = useState([])
-   
+
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
     const [layout, setLayout] = useState(true);
 
-console.log(layout);
+    // console.log(layout);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/all-volunteer?search=${search}`);
+                const response = await axios.get(`https://b9-a11-serversite.vercel.app/all-volunteer?search=${search}`);
                 setAllVolunteer(response.data);
                 setLoading(false)
             } catch (error) {
@@ -31,7 +31,7 @@ console.log(layout);
         fetchData();
     }, [search]);
     if (loading) {
-        return<Loading></Loading>
+        return <Loading></Loading>
     }
 
     if (allVolunteer.length === 0) {
@@ -43,7 +43,7 @@ console.log(layout);
         const text = e.target.search.value;
         setSearch(text)
     }
-    console.log(search);
+    // console.log(search);
     return (
         <div>
             <Helmet>
@@ -56,7 +56,7 @@ console.log(layout);
                     <button className="btn join-item rounded-r-full">Search</button>
                 </form>
 
-                <button onClick={()=>setLayout(true)}>
+                <button onClick={() => setLayout(true)}>
                     <BsGrid3X3GapFill className="text-2xl" />
                 </button>
 
@@ -66,7 +66,7 @@ console.log(layout);
 
 
             </div>
-            <div className={`${!layout &&'hidden'} grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}>
+            <div className={`${!layout && 'hidden'} grid px-4 md:px-0 my-14 container gap-x-16 gap-y-8 mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}>
                 {
                     allVolunteer.map(volunteer => <AllVolunteer
                         key={volunteer._id}

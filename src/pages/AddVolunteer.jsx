@@ -8,11 +8,11 @@ import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 
 const AddVolunteer = () => {
-    const{user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [deadline, setStartDate] = useState(new Date());
     const handlePostButton = (e) => {
         e.preventDefault()
-        
+
         const form = e.target;
         const thumbnail = form.thumbnail.value;
         const title = form.title.value;
@@ -21,22 +21,26 @@ const AddVolunteer = () => {
         const location = form.location.value;
         const volunteerNeed = parseInt(form.volunteerNeed.value);
         if (volunteerNeed === 0) {
-            return alert('0 is not allowed')
+            return Swal.fire({
+                icon: "warning",
+                title: "Oops...",
+                text: "0 Value is not allowed ",
+            });
         }
         const organizerName = user?.displayName;
         const organizerEmail = user?.email;
         const organizerPhoto = user?.photoURL;
         const postBy = {
-            name:organizerName,
-            email:organizerEmail,
-            photo:organizerPhoto
+            name: organizerName,
+            email: organizerEmail,
+            photo: organizerPhoto
         }
-        const allData = { thumbnail, title, description, deadline, category, location, volunteerNeed,  postBy }
+        const allData = { thumbnail, title, description, deadline, category, location, volunteerNeed, postBy }
         // console.log(thumbnail, title, description, category, location, volunteerNeed, OrganizerName, organizerEmail);
         console.log(allData);
-        axios.post('http://localhost:5000/volunteer', allData)
+        axios.post('https://b9-a11-serversite.vercel.app/volunteer', allData)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -45,12 +49,12 @@ const AddVolunteer = () => {
                         confirmButtonText: 'Back'
                     })
                 }
-        })
-        
+            })
+
     }
 
     return (
-        <div className='grid container gap-10 mx-auto p-4 lg:grid-cols-5'>
+        <div className='grid container gap-10 mx-auto p-4 mt-10 lg:grid-cols-5'>
             <Helmet>
                 <title>Volunteer Venue || Add Volunteer</title>
 
@@ -121,21 +125,21 @@ const AddVolunteer = () => {
                                 className="border p-2 rounded-md"
                                 selected={deadline} onChange={(date) => setStartDate(date)} />
                         </div>
-                  </div>
+                    </div>
 
 
 
                     {/* Organizer Name */}
                     <div className="mb-4">
                         <label className="block font-semibold mb-1">Organizer Name:</label>
-                        <input required name='OrganizerName' defaultValue={user?.displayName} readOnly type="text" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"  />
+                        <input required name='OrganizerName' defaultValue={user?.displayName} readOnly type="text" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
                     </div>
 
 
                     {/* Organizer Email */}
                     <div className="mb-4">
                         <label className="block font-semibold mb-1">Organizer Email:</label>
-                        <input required name='organizerEmail'readOnly defaultValue={user?.email} type="email" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"  />
+                        <input required name='organizerEmail' readOnly defaultValue={user?.email} type="email" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
                     </div>
 
                     <input type="submit" className='btn btn-outline w-full btn-ghost' value="POST" />

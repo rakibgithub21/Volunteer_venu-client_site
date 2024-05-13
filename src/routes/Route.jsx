@@ -11,28 +11,32 @@ import Update from "../pages/ManageMyPost/Update";
 import BeAVolunteer from "../components/BeAVolunteer";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+// import { useContext } from "react";
+// import { AuthContext } from "../providers/AuthProvider";
+
+// const{user} = useContext(AuthContext)
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
-                element:<Home></Home>
+                element: <Home></Home>
             },
             {
                 path: '/login',
-                element:<Login></Login>
+                element: <Login></Login>
             },
             {
                 path: '/register',
-                element:<Register></Register>
+                element: <Register></Register>
             },
             {
                 path: '/need-volunteer',
-                element:<NeedVolunteer></NeedVolunteer>
+                element: <NeedVolunteer></NeedVolunteer>
             },
             {
                 path: '/manage-post',
@@ -45,18 +49,19 @@ export const router = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
+                loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
             },
             {
                 path: '/volunteer-details/:id',
                 element: <PrivateRoute><DetailsValunteer></DetailsValunteer></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/all/${params.id}`)
+                // loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
+                //loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}?email=${user?.email}`)
             },
             {
                 path: '/be-volunteer/:id',
                 element: <PrivateRoute><BeAVolunteer></BeAVolunteer></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
-                
+                loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
+
             }
         ]
     },

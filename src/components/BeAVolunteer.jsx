@@ -8,9 +8,9 @@ import Swal from "sweetalert2";
 
 
 const BeAVolunteer = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const datas = useLoaderData()
-    
+
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
 
 
@@ -20,7 +20,7 @@ const BeAVolunteer = () => {
 
 
 
-    const handleBeAVolunteer =  (e) => {
+    const handleBeAVolunteer = (e) => {
         e.preventDefault()
         if (user?.email === datas.postBy.email) {
             return Swal.fire({
@@ -43,7 +43,7 @@ const BeAVolunteer = () => {
         const status = form.status.value;
         const suggestion = form.suggestion.value;
         const allData = {
-            post_id:datas._id,
+            post_id: datas._id,
             thumbnail,
             title,
             description,
@@ -52,8 +52,8 @@ const BeAVolunteer = () => {
             volunteerNeed,
             deadline,
             postBy: {
-               name: OrganizerName,
-               email: organizerEmail
+                name: OrganizerName,
+                email: organizerEmail
             },
             volunteerDetails: {
                 email: volunteerEmail,
@@ -62,9 +62,9 @@ const BeAVolunteer = () => {
             status,
             suggestion
         }
-        axios.post('http://localhost:5000/beVolunteer', allData)
+        axios.post('https://b9-a11-serversite.vercel.app/beVolunteer', allData)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: "REQUEST DONE?",
@@ -72,13 +72,13 @@ const BeAVolunteer = () => {
                         icon: "success"
                     });
 
-                    axios.patch(`http://localhost:5000/all/${datas._id}`) 
+                    axios.patch(`https://b9-a11-serversite.vercel.app/all/${datas._id}`)
                         .then(res => {
-                        console.log(res.data);
-                    })
+                            // console.log(res.data);
+                        })
                 }
-        })
-        
+            })
+
 
     }
     return (
@@ -96,7 +96,7 @@ const BeAVolunteer = () => {
                         <label htmlFor="title" className="block font-semibold mb-1">Post Title:</label>
                         <input defaultValue={datas.title} readOnly name='title' type="text" id="title" className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500" />
                     </div>
-               </div>
+                </div>
 
                 {/* description */}
                 <div className="mb-4">
@@ -172,14 +172,14 @@ const BeAVolunteer = () => {
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" htmlFor="status">Status</label>
-                            <input name="status"  readOnly defaultValue={'requested'} id="status" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="status" readOnly defaultValue={'requested'} id="status" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
                         <div>
                             <label className="text-gray-700 dark:text-gray-200" htmlFor="suggestion">Suggestion</label>
                             <textarea required className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" name="suggestion" id="suggestion"></textarea>
-                       </div>
+                        </div>
 
-                        
+
                     </div>
                 </div>
 

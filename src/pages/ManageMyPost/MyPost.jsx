@@ -4,12 +4,14 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../components/Loading";
 
 
 const MyPost = () => {
     const { user } = useContext(AuthContext)
 
     const [myPost, setMyPost] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getData()
@@ -17,9 +19,10 @@ const MyPost = () => {
 
 
     const getData = async () => {
-        axios(`http://localhost:5000/alls/${user?.email}`)
+        axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true })
             .then(res => {
                 setMyPost(res.data)
+                setLoading(false)
             })
     }
 
@@ -34,7 +37,7 @@ const MyPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/all/${id}`)
+                axios.delete(`https://b9-a11-serversite.vercel.app/all/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -55,7 +58,9 @@ const MyPost = () => {
 
     }
 
-
+    if (loading) {
+        return <Loading></Loading>
+    }
     // console.log(myPost);
     return (
         <section className='container px-4 mx-auto pt-12'>

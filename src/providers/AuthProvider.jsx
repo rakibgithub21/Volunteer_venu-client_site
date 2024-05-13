@@ -12,7 +12,7 @@ import {
     updateProfile,
 } from 'firebase/auth'
 import app from './firebase.config'
-import axios from 'axios'
+// import axios from 'axios'
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -46,12 +46,13 @@ const AuthProvider = ({ children }) => {
 
     const logOut = async () => {
         setLoading(true)
-        axios('http://localhost:5000/logout', {
-            withCredentials:true
-        })
-            .then(res => {
-                console.log(res.data);
-        })
+        // document.cookie = 'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        // axios('https://b9-a11-serversite.vercel.app/logout', {
+        //     withCredentials: true
+        // })
+        //     .then(res => {
+        //         // console.log(res.data);
+        //     })
         return signOut(auth)
     }
 
@@ -66,7 +67,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            console.log('CurrentUser-->', currentUser)
+            // console.log('CurrentUser-->', currentUser)
             setLoading(false)
         })
         return () => {

@@ -6,7 +6,7 @@ const ManageMyPost = () => {
     return (
         <Tabs>
            
-            <div className='container mx-auto'>
+            <div className='container mx-auto mt-20'>
                 
                 <div className='flex items-center justify-center'>
                     <TabList>
