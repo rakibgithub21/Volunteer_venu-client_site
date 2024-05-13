@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 
 const Register = () => {
@@ -22,6 +23,16 @@ const Register = () => {
         console.log(name, photo, email, password);
         createUser(email, password)
             .then(result => {
+                // cookie
+                axios.post('http://localhost:5000/jwt', {
+                    email: result.user.email
+                }, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                // ----------------
                 console.log(result.user);
                 toast.success('Register Successfully')
                 updateUserProfile(name, photo)
