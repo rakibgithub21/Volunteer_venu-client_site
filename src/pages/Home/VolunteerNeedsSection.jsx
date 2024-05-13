@@ -19,7 +19,11 @@ const VolunteerNeedsSection = () => {
         return<Loading></Loading>
     }
     return (
-        <div>
+        <div className="mt-24">
+            <div className="text-center font-raleway  px-5 lg:px-0 lg:w-2/3 mx-auto">
+                <h3 className="text-2xl md:text-4xl font-medium font-roboto mb-5">Volunteer Needs Now</h3>
+                <p>Dive into our Volunteer Needs Now section to discover vital opportunities waiting for your support. With upcoming deadlines looming, these six cards feature critical volunteer posts where your involvement can make a tangible impact. Whether it is aiding local communities, supporting environmental initiatives, or championing social causes, find your perfect match and be the change today!</p>
+           </div>
             <div className="grid my-10 px-8 md:px-0 container mx-auto grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 lg:grid-cols-3">
                 {
                     volunteerDatas.map(volunteer => <Volunteer
