@@ -7,9 +7,10 @@ import { useContext, useRef, useState } from "react"
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 
 const Login = () => {
-    const { signIn, githubLogin, setLoading,signInWithGoogle } = useContext(AuthContext)
+    const { signIn, githubLogin, setLoading, signInWithGoogle } = useContext(AuthContext)
     const formRef = useRef(null);
     const [error, setError] = useState('')
     const location = useLocation();
@@ -25,10 +26,21 @@ const Login = () => {
         const { email, password } = data;
         signIn(email, password)
             .then(result => {
+                // cookie
+                axios.post('http://localhost:5000/jwt', {
+                    email: result.user.email
+                }, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                // --------------
+
                 toast.success('Login Successfully')
                 formRef.current.reset();
                 navigate(from, { replace: true })
-                console.log(result.user);
+                // console.log(result.user.email);
             })
             .catch(error => {
                 console.log(error.message);
@@ -39,7 +51,19 @@ const Login = () => {
 
     const loginWithGoogle = () => {
         signInWithGoogle()
-            .then(() => {
+            .then((result) => {
+                // cookie
+                axios.post('http://localhost:5000/jwt', {
+                    email: result.user.email
+                }, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                // -------------
+
+
                 toast.success('Google Login SuccessFully')
                 navigate(from, { replace: true })
             })
@@ -54,7 +78,18 @@ const Login = () => {
 
     const loginWithGithub = () => {
         githubLogin()
-            .then(() => {
+            .then((result) => {
+                // cookie
+                axios.post('http://localhost:5000/jwt', {
+                    email: result.user.email
+                }, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                // -------------------
+
                 toast.success('Github Login SuccessFully')
                 navigate(location?.state ? location.state : '/')
             })
