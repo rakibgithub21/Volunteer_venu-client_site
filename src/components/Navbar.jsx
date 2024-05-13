@@ -46,8 +46,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex font-raleway">
                     <ul className="menu menu-horizontal gap-2 px-1">
-                        <NavLink data-tooltip-id="my-tooltip-2" className={({ isActive }) => isActive ? 'border-2 font-semibold  text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/'}>Home</NavLink>
-                        <NavLink data-tooltip-id="my-tooltip-2" className={({ isActive }) => isActive ? 'border-2 font-semibold   text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/need-volunteer'}>Need Volunteer</NavLink>
+                        <NavLink  className={({ isActive }) => isActive ? 'border-2 font-semibold  text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/'}>Home</NavLink>
+                        <NavLink  className={({ isActive }) => isActive ? 'border-2 font-semibold   text-[#10be0a] border-[#a3da5aee] py-3 rounded-xl px-5' : 'py-3 px-5  rounded-xl hover:bg-cyan-100 hover:text-blue-500 '} to={'/need-volunteer'}>Need Volunteer</NavLink>
 
                     </ul>
                 </div>

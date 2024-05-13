@@ -4,7 +4,7 @@ import Faq from "./Faq";
 import Slider from "./Slider";
 import VolunteerNeedsSection from "./VolunteerNeedsSection";
 import Feedback from "../../components/Feedback";
-// import Comment from "../../components/Comment";
+// import UserComments from "../../components/UserComments";
 
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
             <VolunteerNeedsSection></VolunteerNeedsSection>
             <Faq></Faq>
             <Feedback></Feedback>
-            {/* <Comment></Comment> */}
+            {/* <UserComments></UserComments> */}
         </div>
     );
 };
