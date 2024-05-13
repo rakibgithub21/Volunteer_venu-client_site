@@ -1,6 +1,8 @@
 
 
 const Feedback = () => {
+    const date = new Date().toLocaleDateString()
+    console.log(date);
     return (
         <section className="py-6 bg-gradient-to-r from-rose-100 to-red-50 mt-10 rounded-lg  raleway">
             <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
@@ -38,11 +40,23 @@ const Feedback = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" /><path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" /></svg>
                         <input required type="text"  className="grow text-black placeholder:text-black" placeholder="Email" />
                     </label>
+                    <div className="flex gap-5">
+                       
+                        <select  required name='ratings' id="ratings" className="w-full border bg-red-200 text-black border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
+                            <option value="">Select Ratings</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <label className="input text-black input-bordered flex items-center bg-red-200 gap-2">
+                            <input readOnly defaultValue={date} type="text" name="" id="" />
+                        </label>
+                   </div>
                     <label className="block">
 
-                        <textarea data-tooltip-id="my-tooltip-4" required rows={3} className="textarea placeholder:text-black bg-red-200 textarea-bordered textarea-lg text-black w-full " ></textarea>
+                        <textarea data-tooltip-id="my-tooltip-4" placeholder="Add Your Valuable Comment..." required rows={3} className="textarea placeholder:text-black   bg-red-200 textarea-bordered textarea-lg text-black w-full " ></textarea>
                     </label>
-                    <button data-tooltip-id="my-tooltip-3" type="submit" className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-violet-600 text-gray-50 focus:ring-violet-600 hover:ring-violet-600">Feedback</button>
+                    <button data-tooltip-id="my-tooltip-3" type="submit" className="self-center  px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-violet-600 text-gray-50 focus:ring-violet-600 hover:ring-violet-600">Feedback</button>
                 </form>
             </div>
             
