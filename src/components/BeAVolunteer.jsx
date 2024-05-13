@@ -23,7 +23,11 @@ const BeAVolunteer = () => {
     const handleBeAVolunteer =  (e) => {
         e.preventDefault()
         if (user?.email === datas.postBy.email) {
-            return alert('Action Not Permitted')
+            return Swal.fire({
+                title: "Opps!",
+                text: "You post for this volunteer. You can,t be a volunteer",
+                icon: "warning"
+            });
         }
         const form = e.target;
         const thumbnail = form.thumbnail.value;
