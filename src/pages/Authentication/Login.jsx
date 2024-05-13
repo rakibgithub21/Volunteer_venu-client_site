@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
-    const { signIn, setLoading,signInWithGoogle } = useContext(AuthContext)
+    const { signIn, githubLogin, setLoading,signInWithGoogle } = useContext(AuthContext)
     const formRef = useRef(null);
     const [error, setError] = useState('')
     const location = useLocation();
@@ -52,6 +52,22 @@ const Login = () => {
     }
 
 
+    const loginWithGithub = () => {
+        githubLogin()
+            .then(() => {
+                toast.success('Github Login SuccessFully')
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false)
+                setError(error.message)
+            })
+
+    }
+
+
+
     return (
         <div className=' flex my-10 justify-center items-center min-h-[calc(100vh-306px)]'>
             <Helmet>
@@ -70,7 +86,7 @@ const Login = () => {
                         Login in with Google
                     </span>
                 </div>
-                <div className='flex cursor-pointer bg-gray-300 items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                <div onClick={loginWithGithub} className='flex cursor-pointer bg-gray-300 items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
                     <div className='px-4 py-2'>
                         <img className='h-10 w-10' src={gitbub} alt="" />
                     </div>
