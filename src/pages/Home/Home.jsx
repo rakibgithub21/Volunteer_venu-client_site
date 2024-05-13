@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Faq from "./Faq";
 import Slider from "./Slider";
 import VolunteerNeedsSection from "./VolunteerNeedsSection";
+import Feedback from "../../components/Feedback";
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <Slider></Slider>
             <VolunteerNeedsSection></VolunteerNeedsSection>
             <Faq></Faq>
+            <Feedback></Feedback>
         </div>
     );
 };
