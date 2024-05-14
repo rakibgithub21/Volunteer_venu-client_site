@@ -12,6 +12,8 @@ import BeAVolunteer from "../components/BeAVolunteer";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import AllComents from "../components/AllComents";
+import UserProfile from "../pages/Home/UserProfile";
+import MyRequest from "../pages/ManageMyPost/MyRequest";
 // import { useContext } from "react";
 // import { AuthContext } from "../providers/AuthProvider";
 
@@ -69,7 +71,12 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><AllComents></AllComents></PrivateRoute>,
 
 
-            }
+            },
+            {
+                path: '/update-profile',
+                element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
+            },
+            
         ]
     },
 ]);

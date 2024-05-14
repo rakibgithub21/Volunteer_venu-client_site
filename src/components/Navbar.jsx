@@ -71,6 +71,7 @@ const Navbar = () => {
                                         </NavLink>
                                     </li>
                                     <li><NavLink className={({ isActive }) => isActive ? 'border border-[#a3da5aee]' : 'border'} to={'/manage-post'}>Manage My Post</NavLink></li>
+                                    <li><NavLink className={({ isActive }) => isActive ? 'border border-[#a3da5aee]' : 'border'} to={'/update-profile'}>Update Profile</NavLink></li>
                                 </ul>
                             </div>
                         }

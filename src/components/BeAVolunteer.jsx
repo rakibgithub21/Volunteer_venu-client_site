@@ -14,7 +14,8 @@ const BeAVolunteer = () => {
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
 
 
-
+    const navigate = useNavigate()
+    
 
 
 
@@ -36,6 +37,14 @@ const BeAVolunteer = () => {
         const category = form.category.value;
         const location = form.location.value;
         const volunteerNeed = parseInt(form.volunteerNeed.value);
+        if (volunteerNeed === 0) {
+            return Swal.fire({
+                icon: "warning",
+                title: "Oops...",
+                text: "No Volunteer Need. Volunteer Need is 0 !!",
+               
+            });
+        }
         const OrganizerName = form.OrganizerName.value;
         const organizerEmail = form.organizerEmail.value;
         const volunteerName = form.volunteerName.value;
@@ -76,6 +85,9 @@ const BeAVolunteer = () => {
                         .then(res => {
                             // console.log(res.data);
                         })
+                    navigate('/need-volunteer')
+                    
+                //    window.location.reload()
                 }
 
 

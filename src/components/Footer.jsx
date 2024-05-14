@@ -52,7 +52,7 @@ const Footer = () => {
                                 +66 81 234 5678
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" href="#">contact@exploreseasia.com</a>
+                                <a rel="noopener noreferrer" href="#">contact@voulteervenue.com</a>
                             </li>
                         </ul>
                     </div>
