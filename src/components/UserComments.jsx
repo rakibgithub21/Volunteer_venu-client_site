@@ -27,7 +27,7 @@ const UserComments = () => {
             </div>
 
             <div className="flex justify-center my-5">
-                <Link><button className="btn btn-link ">Se All Comments</button></Link>
+                <Link to={'/all-comments'}><button className="btn btn-link ">Se All Comments</button></Link>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import Update from "../pages/ManageMyPost/Update";
 import BeAVolunteer from "../components/BeAVolunteer";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import AllComents from "../components/AllComents";
 // import { useContext } from "react";
 // import { AuthContext } from "../providers/AuthProvider";
 
@@ -61,6 +62,12 @@ export const router = createBrowserRouter([
                 path: '/be-volunteer/:id',
                 element: <PrivateRoute><BeAVolunteer></BeAVolunteer></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
+
+            },
+            {
+                path: '/all-comments',
+                element: <PrivateRoute><AllComents></AllComents></PrivateRoute>,
+                
 
             }
         ]
