@@ -1,4 +1,4 @@
-# Volunteer Veue
+# Volunteer Venue
 
 ## Live Site URL
 [Volunteer Veue](https://volunteer-venu-a11.web.app/)
@@ -33,4 +33,7 @@ Volunteer Veue is a platform designed to connect volunteers with meaningful oppo
 ## Real-time Feedback and Notifications
 
 - **Feedback Messages:** Users receive real-time feedback messages upon successful actions (e.g., post creation, update, delete) and error messages for any encountered issues.
-- **Notifications:** Users may receive notifications for important updates, such as when someone applies to volunteer for their post or when their application for volunteering is approved or rejected.
+
+## Feedback and Support
+
+We value your feedback! If you have any questions, suggestions, or need assistance, please don't hesitate to reach out to our support team at mdrakibulislam.mailbox@gmail.com.
