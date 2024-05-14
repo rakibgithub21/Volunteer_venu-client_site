@@ -6,11 +6,9 @@
 ## About
 Volunteer Veue is a platform designed to connect volunteers with meaningful opportunities to give back to their communities.
 
-## About
-Volunteer Veue is a platform designed to connect volunteers with meaningful opportunities to give back to their communities.
 
 
-# Volunteer Management Platform
+# Volunteer Management Platform Features
 
 ## User Authentication and Profile Management
 
