@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import SingleComment from "./SingleComment";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const UserComments = () => {
     const [comments, setComments] = useState([])
     
     useEffect(() => {
-        fetch('fake.json')
-            .then(res => res.json())
-            .then(data => {
-            setComments(data)
+        axios('http://localhost:5000/feedback')
+            .then(res => {
+            setComments(res.data)
         })
     },[])
     return (
@@ -19,10 +20,14 @@ const UserComments = () => {
                 {
                     comments.map(comment => <SingleComment
                     
-                        key={comment.id}
+                        key={comment._id}
                         comment={comment}
                     ></SingleComment>)
                 }
+            </div>
+
+            <div className="flex justify-center my-5">
+                <Link><button className="btn btn-link ">Se All Comments</button></Link>
             </div>
         </div>
     );
