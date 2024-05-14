@@ -7,17 +7,17 @@ import axios from "axios";
 
 const Navbar = () => {
     const { user, loading, logOut } = useContext(AuthContext)
-    const handleLogout = () => {
-        logOut()
-            .then(response => {
-                axios('https://b9-a11-serversite.vercel.app/logout', {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        console.log(res.data);
-                    })
-            })
-    }
+    // const handleLogout = () => {
+    //     logOut()
+    //         .then(response => {
+    //             axios('https://b9-a11-serversite.vercel.app/logout', {
+    //                 withCredentials: true
+    //             })
+    //                 .then(res => {
+    //                     console.log(res.data);
+    //                 })
+    //         })
+    // }
     const [theme, setTheme] = useState('light');
 
     useEffect(() => {
@@ -97,9 +97,9 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-[100] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                
+
                                 <li>
-                                    <button onClick={handleLogout} className=" btn-outline text-lg btn-error">Logout</button>
+                                    <button onClick={logOut} className=" btn-outline text-lg btn-error">Logout</button>
                                 </li>
                             </ul>
                         </div> : <Link to={'/login'} className="btn btn-success">Login</Link>

@@ -9,10 +9,10 @@ const Faq = () => {
     return (
         <div className='grid lg:grid-cols-5 gap-5 mt-20 mb-20 px-2'>
            
-            <div className=' lg:col-span-2 mb-14 lg:mb-0'>
+            <div data-aos="fade-right" data-aos-duration="1000" className=' lg:col-span-2 mb-14 lg:mb-0'>
                 <img className='w-full h-full rounded-md' src={faq} alt="" />
             </div>
-            <div className="px-2 space-y-2 lg:col-span-3 flex flex-col justify-center">
+            <div data-aos="fade-left" data-aos-duration="1000" className="px-2 space-y-2 lg:col-span-3 flex flex-col justify-center">
                 <h3 className='text-3xl font-semibold font-roboto text-center  mb-5'>People Also Search This</h3>
                 <div className="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" defaultChecked />

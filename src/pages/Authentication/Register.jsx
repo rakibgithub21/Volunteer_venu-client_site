@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
@@ -10,6 +10,8 @@ import axios from "axios";
 const Register = () => {
     const { createUser, updateUserProfile, setUser, setLoading } = useContext(AuthContext)
     const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const from = location?.state || '/'
     const formRef = useRef(null);
     const {
         register,
@@ -24,19 +26,20 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 // cookie
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
-                    email: result.user.email
-                }, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log(res.data);
-                    })
+                // axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                //     email: result.user.email
+                // }, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         // console.log(res.data);
+                //     })
                 // ----------------
                 // console.log(result.user);
                 toast.success('Register Successfully')
                 updateUserProfile(name, photo)
                 setUser({ ...result?.user, photoURL: photo, displayName: name })
+                navigate(from)
                 formRef.current.reset();
 
             })

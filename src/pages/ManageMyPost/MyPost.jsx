@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../components/Loading";
+import NoPost from "../../components/NoPost";
 
 
 const MyPost = () => {
@@ -19,7 +20,7 @@ const MyPost = () => {
 
 
     const getData = async () => {
-        axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true })
+        axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true })  //
             .then(res => {
                 setMyPost(res.data)
                 setLoading(false)
@@ -61,9 +62,14 @@ const MyPost = () => {
     if (loading) {
         return <Loading></Loading>
     }
+
+
+    if (myPost.length === 0) {
+        return <NoPost></NoPost>
+    }
     // console.log(myPost);
     return (
-        <section className='container px-4 mx-auto pt-12'>
+        <section className='container min-h-[400px] px-4 mx-auto pt-12'>
             <Helmet>
                 <title>Volunteer Venue || My Volunteer Post</title>
             </Helmet>

@@ -4,7 +4,7 @@
 const SingleComment = ({ comment }) => {
     console.log(comment);
     return (
-        <div className="border shadow-lg mt-20">
+        <div data-aos="fade-down-right" data-aos-duration="1000" className="border shadow-lg mt-20">
             <div className="flex justify-between p-4">
                 <div className="flex space-x-4">
                     <div>

@@ -9,7 +9,7 @@ const AllComents = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios('http://localhost:5000/feedbacks')
+        axios('https://b9-a11-serversite.vercel.app/feedbacks')
             .then(res => {
                 setComments(res.data)
                 setLoading(false)

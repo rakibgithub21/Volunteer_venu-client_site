@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Volunteer = ({ volunteer }) => {
     // console.log(volunteer);
     return (
-        <div className="w-full font-roboto overflow-hidden  bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div data-aos="fade-up" data-aos-duration="1000" className="w-full font-roboto overflow-hidden  bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <img className=" w-full h-56" src={volunteer.thumbnail} alt="avatar" />
 
             <div className="bg-gray-900">

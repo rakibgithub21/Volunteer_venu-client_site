@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from 'react'
+import { Cookies } from 'react-cookie';
 import {
     GithubAuthProvider,
     GoogleAuthProvider,
@@ -12,6 +13,7 @@ import {
     updateProfile,
 } from 'firebase/auth'
 import app from './firebase.config'
+import axios from 'axios'
 // import axios from 'axios'
 
 export const AuthContext = createContext(null)
@@ -47,12 +49,30 @@ const AuthProvider = ({ children }) => {
     const logOut = async () => {
         setLoading(true)
         // document.cookie = 'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+
+        // const { data } = await axios(`https://b9-a11-serversite.vercel.app/logout`, {
+        //     withCredentials: true
+        // })
+        // console.log(data);
+
+
+
+        // Cookies.remove('token')
+        // document.cookie=''
+
+
+
+
         // axios('https://b9-a11-serversite.vercel.app/logout', {
         //     withCredentials: true
         // })
         //     .then(res => {
         //         // console.log(res.data);
         //     })
+
+
+
         return signOut(auth)
     }
 

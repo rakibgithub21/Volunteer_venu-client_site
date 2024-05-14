@@ -6,9 +6,11 @@ import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const AddVolunteer = () => {
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     const [deadline, setStartDate] = useState(new Date());
     const handlePostButton = (e) => {
         e.preventDefault()
@@ -49,6 +51,7 @@ const AddVolunteer = () => {
                         confirmButtonText: 'Back'
                     })
                 }
+                navigate('/manage-post')
             })
 
     }

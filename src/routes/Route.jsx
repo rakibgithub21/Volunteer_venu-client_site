@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
             {
                 path: '/all-comments',
                 element: <PrivateRoute><AllComents></AllComents></PrivateRoute>,
-                
+
 
             }
         ]

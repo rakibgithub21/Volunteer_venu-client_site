@@ -27,14 +27,16 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 // cookie
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
-                    email: result.user.email
-                }, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log(res.data);
-                    })
+
+                // axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                //     email: result.user.email
+                // }, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         // console.log(res.data);
+                //     })
+
                 // --------------
 
                 toast.success('Login Successfully')
@@ -53,14 +55,14 @@ const Login = () => {
         signInWithGoogle()
             .then((result) => {
                 // cookie
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
-                    email: result.user.email
-                }, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log(res.data);
-                    })
+                // axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                //     email: result.user.email
+                // }, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         // console.log(res.data);
+                //     })
                 // -------------
 
 
@@ -80,14 +82,14 @@ const Login = () => {
         githubLogin()
             .then((result) => {
                 // cookie
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
-                    email: result.user.email
-                }, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log(res.data);
-                    })
+                // axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                //     email: result.user.email
+                // }, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         // console.log(res.data);
+                //     })
                 // -------------------
 
                 toast.success('Github Login SuccessFully')

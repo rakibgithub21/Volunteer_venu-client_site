@@ -5,6 +5,7 @@ import Loading from "../../components/Loading";
 import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import NoRequest from "../../components/NoRequest";
 
 
 const MyRequest = () => {
@@ -57,14 +58,20 @@ const MyRequest = () => {
     }
 
 
+
+
     if (loading) {
         return <Loading></Loading>
+    }
+
+    if (myRequest.length === 0) {
+        return <NoRequest></NoRequest>
     }
 
     // console.log(loading);
 
     return (
-        <section className='container px-4 mx-auto pt-12'>
+        <section className='container min-h-[400px] px-4 mx-auto pt-12'>
             <Helmet>
                 <title>Volunteer Venue || My Volunteer Request</title>
             </Helmet>

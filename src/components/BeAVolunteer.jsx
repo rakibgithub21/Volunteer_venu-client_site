@@ -13,7 +13,7 @@ const BeAVolunteer = () => {
 
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
 
-    
+
 
 
 
@@ -77,7 +77,7 @@ const BeAVolunteer = () => {
                             // console.log(res.data);
                         })
                 }
-                
+
 
             })
 

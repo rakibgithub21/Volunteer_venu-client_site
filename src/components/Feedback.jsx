@@ -6,18 +6,18 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Feedback = () => {
     const { user } = useContext(AuthContext)
-    
+
     const date = new Date().toLocaleDateString()
 
     const handleFeedback = (e) => {
         e.preventDefault()
-       
+
         const form = e.target;
         const email = form.email.value;
         const name = form.name.value;
         const ratings = parseInt(form.ratings.value);
         const comment = form.comment.value;
-        
+
         const post = {
             email,
             name,
@@ -26,7 +26,7 @@ const Feedback = () => {
             date
 
         }
-        axios.post('http://localhost:5000/feedback', post)
+        axios.post('https://b9-a11-serversite.vercel.app/feedback', post)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -37,8 +37,8 @@ const Feedback = () => {
                         timer: 1500
                     });
                     e.target.reset()
-            }
-        })
+                }
+            })
         // console.log(post);
 
     }
@@ -82,8 +82,8 @@ const Feedback = () => {
                         <input defaultValue={user?.email ? user?.email : ''} name="email" required type="text" className="grow text-black placeholder:text-black" placeholder="Email" />
                     </label>
                     <div className="flex gap-5">
-                       
-                        <select  required name='ratings' id="ratings" className="w-full border bg-red-200 text-black border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
+
+                        <select required name='ratings' id="ratings" className="w-full border bg-red-200 text-black border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
                             <option value="">Select Ratings</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -92,15 +92,15 @@ const Feedback = () => {
                         <label className="input text-black input-bordered flex items-center bg-red-200 gap-2">
                             <input readOnly defaultValue={date} type="text" name="" id="" />
                         </label>
-                   </div>
+                    </div>
                     <label className="block">
 
                         <textarea name="comment" data-tooltip-id="my-tooltip-4" placeholder="Add Your Valuable Comment..." required rows={3} className="textarea placeholder:text-black   bg-red-200 textarea-bordered textarea-lg text-black w-full " ></textarea>
                     </label>
-                    <button  data-tooltip-id="my-tooltip-3" type="submit" className="self-center  px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-violet-600 text-gray-50 focus:ring-violet-600 hover:ring-violet-600">Feedback</button>
+                    <button data-tooltip-id="my-tooltip-3" type="submit" className="self-center  px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-violet-600 text-gray-50 focus:ring-violet-600 hover:ring-violet-600">Feedback</button>
                 </form>
             </div>
-            
+
         </section>
     );
 };
