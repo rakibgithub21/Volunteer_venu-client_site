@@ -14,7 +14,7 @@ const BeAVolunteer = () => {
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
 
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     
 
 
@@ -85,7 +85,7 @@ const BeAVolunteer = () => {
                         .then(res => {
                             // console.log(res.data);
                         })
-                    navigate('/need-volunteer')
+                    // navigate('/need-volunteer')
                     
                 //    window.location.reload()
                 }
@@ -96,7 +96,7 @@ const BeAVolunteer = () => {
 
     }
     return (
-        <div className="container mx-auto px-4 md:px-0">
+        <div className="container mx-auto mt-4  px-4 md:px-0">
             <form onSubmit={handleBeAVolunteer}>
                 {/* thumbnail */}
                 <div className="md:flex md:gap-4">

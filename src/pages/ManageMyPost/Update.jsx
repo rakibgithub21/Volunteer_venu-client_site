@@ -28,7 +28,7 @@ const Update = () => {
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteerNeed = form.volunteerNeed.value;
+        const volunteerNeed = parseInt(form.volunteerNeed.value);
         const organizerName = user?.displayName;
         const organizerEmail = user?.email;
         const organizerPhoto = user?.photoURL;

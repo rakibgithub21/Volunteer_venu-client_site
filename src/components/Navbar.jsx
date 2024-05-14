@@ -52,7 +52,8 @@ const Navbar = () => {
                             <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'text-sm hover:text-rose-500 '} to={'/'}>Home</NavLink>
                             <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/need-volunteer'}>Need Volunteer</NavLink>
                             <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/add-volunteer'}> Add Volunteer</NavLink>
-                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/need-volunteer'}>Manage My Post</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/manage-post'}>Manage My Post</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? ' text-sm font-medium text-[#0aa9be] underline rounded' : 'hover:text-rose-500 text-sm '} to={'/update-profile'}>Update Profile</NavLink>
                         </ul>
                     </div>
                     <Link to={'/'} className="btn btn-ghost text-xl">Volunteer Venue</Link>
