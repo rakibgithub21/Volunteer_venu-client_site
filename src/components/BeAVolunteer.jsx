@@ -14,7 +14,7 @@ const BeAVolunteer = () => {
     const [deadline, setStartDate] = useState(new Date(datas.deadline) || new Date());
 
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     
 
 
@@ -85,7 +85,7 @@ const BeAVolunteer = () => {
                         .then(res => {
                             // console.log(res.data);
                         })
-                    // navigate('/need-volunteer')
+                    navigate('/manage-post')
                     
                 //    window.location.reload()
                 }

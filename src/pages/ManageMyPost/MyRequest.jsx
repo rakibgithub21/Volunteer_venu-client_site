@@ -50,7 +50,7 @@ const MyRequest = () => {
                             getData()
                         }
                     })
-getData()
+                getData()
             }
         });
 
