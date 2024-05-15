@@ -24,6 +24,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
 
+
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -51,10 +52,10 @@ const AuthProvider = ({ children }) => {
         // document.cookie = 'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
 
-        // const { data } = await axios(`https://b9-a11-serversite.vercel.app/logout`, {
-        //     withCredentials: true
-        // })
-        // console.log(data);
+        const { data } = await axios.post(`https://b9-a11-serversite.vercel.app/logout`, { email: user?.email }, {
+            withCredentials: true
+        })
+        console.log(data);
 
 
 
@@ -87,7 +88,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            // console.log('CurrentUser-->', currentUser)
+            console.log('CurrentUser-->', currentUser)
             setLoading(false)
         })
         return () => {

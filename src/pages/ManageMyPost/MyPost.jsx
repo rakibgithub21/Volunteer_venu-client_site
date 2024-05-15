@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../components/Loading";
 import NoPost from "../../components/NoPost";
+import useAxiosSecure from "../../components/Hooks/useAxiosSecure";
 
 
 const MyPost = () => {
@@ -13,6 +14,7 @@ const MyPost = () => {
 
     const [myPost, setMyPost] = useState([])
     const [loading, setLoading] = useState(true)
+    const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
         getData()
@@ -20,7 +22,10 @@ const MyPost = () => {
 
 
     const getData = async () => {
-        axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true })  //
+        // axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true }) 
+        // --
+        axiosSecure(`/alls/${user?.email}`)
+            // --
             .then(res => {
                 setMyPost(res.data)
                 setLoading(false)

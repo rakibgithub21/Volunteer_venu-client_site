@@ -6,12 +6,14 @@ import { FaXmark } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import NoRequest from "../../components/NoRequest";
+import useAxiosSecure from "../../components/Hooks/useAxiosSecure";
 
 
 const MyRequest = () => {
     const { user } = useContext(AuthContext)
     const [myRequest, setMyRequest] = useState()
     const [loading, setLoading] = useState(true)
+    const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
         getData()
@@ -19,7 +21,8 @@ const MyRequest = () => {
 
     // console.log(myRequest);
     const getData = async () => {
-        axios(`https://b9-a11-serversite.vercel.app/beVolunteer/${user?.email}`, { withCredentials: true })
+        // axios(`https://b9-a11-serversite.vercel.app/beVolunteer/${user?.email}`, { withCredentials: true })
+        axiosSecure(`/beVolunteer/${user?.email}`)
             .then(res => {
                 setMyRequest(res.data)
                 setLoading(false)

@@ -15,7 +15,7 @@ const BeAVolunteer = () => {
 
 
     const navigate = useNavigate()
-    
+
 
 
 
@@ -42,7 +42,7 @@ const BeAVolunteer = () => {
                 icon: "warning",
                 title: "Oops...",
                 text: "No Volunteer Need. Volunteer Need is 0 !!",
-               
+
             });
         }
         const OrganizerName = form.OrganizerName.value;
@@ -86,8 +86,8 @@ const BeAVolunteer = () => {
                             // console.log(res.data);
                         })
                     navigate('/manage-post')
-                    
-                //    window.location.reload()
+
+                    //    window.location.reload()
                 }
 
 

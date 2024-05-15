@@ -26,14 +26,14 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 // cookie
-                // axios.post('https://b9-a11-serversite.vercel.app/jwt', {
-                //     email: result.user.email
-                // }, {
-                //     withCredentials: true
-                // })
-                //     .then(res => {
-                //         // console.log(res.data);
-                //     })
+                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                    email: result.user.email
+                }, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        // console.log(res.data);
+                    })
                 // ----------------
                 // console.log(result.user);
                 toast.success('Register Successfully')
