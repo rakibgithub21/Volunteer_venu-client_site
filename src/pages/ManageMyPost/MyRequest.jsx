@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import NoRequest from "../../components/NoRequest";
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure";
+import { GoDotFill } from "react-icons/go";
 
 
 const MyRequest = () => {
@@ -124,6 +125,12 @@ const MyRequest = () => {
                                         >
                                             Category
                                         </th>
+                                        <th
+                                            scope='col'
+                                            className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                        >
+                                            Status
+                                        </th>
 
 
                                         <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
@@ -156,6 +163,9 @@ const MyRequest = () => {
                                                         {post.category}
                                                     </p>
                                                 </div>
+                                            </td>
+                                            <td className='px-4 flex items-center gap-2 uppercase font-raleway py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                <span className="text-red-500"><GoDotFill /></span>{post.status}
                                             </td>
                                             <td className='px-4 py-4 text-sm whitespace-nowrap'>
                                                 <div className='flex items-center gap-x-6'>
