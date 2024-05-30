@@ -26,7 +26,7 @@ const Feedback = () => {
             date
 
         }
-        axios.post('http://localhost:5000/feedback', post)
+        axios.post('https://b9-a11-serversite.vercel.app/feedback', post)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

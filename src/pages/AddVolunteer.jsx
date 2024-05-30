@@ -40,7 +40,7 @@ const AddVolunteer = () => {
         const allData = { thumbnail, title, description, deadline, category, location, volunteerNeed, postBy }
         // console.log(thumbnail, title, description, category, location, volunteerNeed, OrganizerName, organizerEmail);
         console.log(allData);
-        axios.post('http://localhost:5000/volunteer', allData)
+        axios.post('https://b9-a11-serversite.vercel.app/volunteer', allData)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {

@@ -26,7 +26,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 // cookie
-                axios.post('http://localhost:5000/jwt', {
+                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true

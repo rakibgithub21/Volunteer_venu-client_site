@@ -16,7 +16,7 @@ const MyPost = () => {
     const { user } = useContext(AuthContext)
     const [layout, setLayout] = useState(true)
     console.log(layout);
-    
+
     const [myPost, setMyPost] = useState([])
     const [loading, setLoading] = useState(true)
     const axiosSecure = useAxiosSecure()
@@ -27,7 +27,7 @@ const MyPost = () => {
 
 
     const getData = async () => {
-        // axios(`http://localhost:5000/alls/${user?.email}`, { withCredentials: true }) 
+        // axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true }) 
         // --
         axiosSecure(`/alls/${user?.email}`)
             // --
@@ -48,7 +48,7 @@ const MyPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/all/${id}`)
+                axios.delete(`https://b9-a11-serversite.vercel.app/all/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -213,7 +213,7 @@ const MyPost = () => {
             </div> */}
 
             {/* for grid layout */}
-{/* 
+            {/* 
             <div className="grid grid-cols-1 gap-10 my-20 md:grid-cols-2 lg:grid-cols-3">
                 {
                     myPost.map(post => <MyPostGridLayout
@@ -223,7 +223,7 @@ const MyPost = () => {
                 }
             </div> */}
 
-            
+
             {
                 layout ? <div className='flex flex-col mt-6'>
                     <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -350,7 +350,7 @@ const MyPost = () => {
                 </div>
             }
 
-            
+
         </section>
     );
 };

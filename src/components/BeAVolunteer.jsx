@@ -71,7 +71,7 @@ const BeAVolunteer = () => {
             status,
             suggestion
         }
-        axios.post('http://localhost:5000/beVolunteer', allData)
+        axios.post('https://b9-a11-serversite.vercel.app/beVolunteer', allData)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {
@@ -81,7 +81,7 @@ const BeAVolunteer = () => {
                         icon: "success"
                     });
 
-                    axios.patch(`http://localhost:5000/all/${datas._id}`)
+                    axios.patch(`https://b9-a11-serversite.vercel.app/all/${datas._id}`)
                         .then(res => {
                             // console.log(res.data);
                         })

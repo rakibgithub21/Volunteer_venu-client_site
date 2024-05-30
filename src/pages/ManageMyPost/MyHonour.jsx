@@ -11,7 +11,7 @@ const MyHonour = () => {
     const [count, setCount] = useState(0)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/productsCount/${user?.email}`)
+        axios.get(`https://b9-a11-serversite.vercel.app/productsCount/${user?.email}`)
             .then(res => {
                 console.log(res.data);
                 setCount(res.data)
@@ -49,7 +49,7 @@ const MyHonour = () => {
             </div>
 
             <div className='text-center text-lg mx-auto md:w-4/5 lg:w-1/2 space-y-5'>
-                <p>If you want to become a <span>Golden Hero</span> in our Volunteer Venue, you must make minimum 5 volunteer requests.</p>
+                <p>If you want to become a <span>Golden Hero</span> in our Volunteer Venue, you must make minimum 6 volunteer requests.</p>
             </div>
 
             <div className='flex justify-center'>

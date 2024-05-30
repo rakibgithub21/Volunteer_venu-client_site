@@ -8,7 +8,7 @@ const UserComments = () => {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        axios('http://localhost:5000/feedback')
+        axios('https://b9-a11-serversite.vercel.app/feedback')
             .then(res => {
                 setComments(res.data)
             })

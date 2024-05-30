@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
         // document.cookie = 'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
 
-        const { data } = await axios.post(`http://localhost:5000/logout`, { email: user?.email }, {
+        const { data } = await axios.post(`https://b9-a11-serversite.vercel.app/logout`, { email: user?.email }, {
             withCredentials: true
         })
         console.log(data);
