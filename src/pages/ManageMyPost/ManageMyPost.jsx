@@ -2,6 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import MyPost from './MyPost';
 import MyRequest from './MyRequest';
+import MyHonour from './MyHonour';
 const ManageMyPost = () => {
     return (
         <Tabs>
@@ -12,6 +13,7 @@ const ManageMyPost = () => {
                     <TabList>
                         <Tab>My Need Volunteer Post</Tab>
                         <Tab>My Volunteer Request</Tab>
+                        <Tab>Achivement</Tab>
                     </TabList>
                 </div>
                
@@ -20,6 +22,9 @@ const ManageMyPost = () => {
                 </TabPanel>
                 <TabPanel>
                     <MyRequest></MyRequest>
+                </TabPanel>
+                <TabPanel>
+                    <MyHonour></MyHonour>
                 </TabPanel>
            </div>
         </Tabs>
