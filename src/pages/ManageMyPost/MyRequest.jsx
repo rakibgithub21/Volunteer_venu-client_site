@@ -22,7 +22,7 @@ const MyRequest = () => {
 
     // console.log(myRequest);
     const getData = async () => {
-        // axios(`https://b9-a11-serversite.vercel.app/beVolunteer/${user?.email}`, { withCredentials: true })
+        // axios(`http://localhost:5000/beVolunteer/${user?.email}`, { withCredentials: true })
         axiosSecure(`/beVolunteer/${user?.email}`)
             .then(res => {
                 setMyRequest(res.data)
@@ -42,7 +42,7 @@ const MyRequest = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://b9-a11-serversite.vercel.app/beVolunteer/${id}`)
+                axios.delete(`http://localhost:5000/beVolunteer/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
 

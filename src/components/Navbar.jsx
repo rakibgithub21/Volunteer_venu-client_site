@@ -9,7 +9,7 @@ const Navbar = () => {
     // const handleLogout = () => {
     //     logOut()
     //         .then(response => {
-    //             axios('https://b9-a11-serversite.vercel.app/logout', {
+    //             axios('http://localhost:5000/logout', {
     //                 withCredentials: true
     //             })
     //                 .then(res => {

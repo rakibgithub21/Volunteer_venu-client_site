@@ -17,7 +17,7 @@ const DetailsValunteer = () => {
 
     useEffect(() => {
 
-        axios.get(`https://b9-a11-serversite.vercel.app/all/${id}?email=${user?.email}`, { withCredentials: true })
+        axios.get(`http://localhost:5000/all/${id}?email=${user?.email}`, { withCredentials: true })
             .then(res => {
                 setData(res.data)
                 setLoading(false)

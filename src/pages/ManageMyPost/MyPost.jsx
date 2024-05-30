@@ -22,7 +22,7 @@ const MyPost = () => {
 
 
     const getData = async () => {
-        // axios(`https://b9-a11-serversite.vercel.app/alls/${user?.email}`, { withCredentials: true }) 
+        // axios(`http://localhost:5000/alls/${user?.email}`, { withCredentials: true }) 
         // --
         axiosSecure(`/alls/${user?.email}`)
             // --
@@ -43,7 +43,7 @@ const MyPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://b9-a11-serversite.vercel.app/all/${id}`)
+                axios.delete(`http://localhost:5000/all/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

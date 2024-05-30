@@ -38,7 +38,7 @@ const Update = () => {
             photo: organizerPhoto
         }
         const allData = { thumbnail, title, description, deadline, category, location, volunteerNeed, postBy }
-        axios.put(` https://b9-a11-serversite.vercel.app/all/${Posts._id}`, allData)
+        axios.put(` http://localhost:5000/all/${Posts._id}`, allData)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.modifiedCount > 0) {

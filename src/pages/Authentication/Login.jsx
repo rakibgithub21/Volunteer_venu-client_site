@@ -28,7 +28,7 @@ const Login = () => {
             .then(result => {
                 // cookie
 
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                axios.post('http://localhost:5000/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true
@@ -55,7 +55,7 @@ const Login = () => {
         signInWithGoogle()
             .then((result) => {
                 // cookie
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                axios.post('http://localhost:5000/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true
@@ -82,7 +82,7 @@ const Login = () => {
         githubLogin()
             .then((result) => {
                 // cookie
-                axios.post('https://b9-a11-serversite.vercel.app/jwt', {
+                axios.post('http://localhost:5000/jwt', {
                     email: result.user.email
                 }, {
                     withCredentials: true

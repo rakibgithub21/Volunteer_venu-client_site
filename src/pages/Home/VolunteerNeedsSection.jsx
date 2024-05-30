@@ -9,7 +9,7 @@ const VolunteerNeedsSection = () => {
 
     const [volunteerDatas, setVolunteerDatas] = useState([])
     useEffect(() => {
-        axios.get('https://b9-a11-serversite.vercel.app/volunteer')
+        axios.get('http://localhost:5000/volunteer')
             .then(res => {
                 setVolunteerDatas(res.data)
                 setLoading(false)

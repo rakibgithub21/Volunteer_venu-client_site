@@ -52,18 +52,18 @@ export const router = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
             },
             {
                 path: '/volunteer-details/:id',
                 element: <PrivateRoute><DetailsValunteer></DetailsValunteer></PrivateRoute>,
-                // loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
-                //loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}?email=${user?.email}`)
+                // loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
+                //loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}?email=${user?.email}`)
             },
             {
                 path: '/be-volunteer/:id',
                 element: <PrivateRoute><BeAVolunteer></BeAVolunteer></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b9-a11-serversite.vercel.app/all/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/all/${params.id}`)
 
             },
             {

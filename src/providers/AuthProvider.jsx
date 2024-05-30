@@ -52,27 +52,10 @@ const AuthProvider = ({ children }) => {
         // document.cookie = 'token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
 
-        const { data } = await axios.post(`https://b9-a11-serversite.vercel.app/logout`, { email: user?.email }, {
+        const { data } = await axios.post(`http://localhost:5000/logout`, { email: user?.email }, {
             withCredentials: true
         })
         console.log(data);
-
-
-
-        // Cookies.remove('token')
-        // document.cookie=''
-
-
-
-
-        // axios('https://b9-a11-serversite.vercel.app/logout', {
-        //     withCredentials: true
-        // })
-        //     .then(res => {
-        //         // console.log(res.data);
-        //     })
-
-
 
         return signOut(auth)
     }
