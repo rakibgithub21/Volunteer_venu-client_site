@@ -1,13 +1,13 @@
 # Volunteer Venue
 
-## Live Site URL [Volunteer Veue](https://volunteer-venu-a11.web.app/)
+## Live Site URL
+[Volunteer Venue](https://volunteer-venue.web.app/)
 
-**Server Side Github Repository Link:** https://github.com/rakibgithub21/Volunteer_venu-server_site
+## Server Side GitHub Repository
+[Volunteer Venue Server](https://github.com/rakibgithub21/Volunteer_venu-server_site)
 
 ## About
-Volunteer Veue is a platform designed to connect volunteers with meaningful opportunities to give back to their communities.
-
-
+Volunteer Venue is a platform designed to connect volunteers with meaningful opportunities to give back to their communities.
 
 # Volunteer Management Platform Features
 
@@ -34,6 +34,12 @@ Volunteer Veue is a platform designed to connect volunteers with meaningful oppo
 ## Real-time Feedback and Notifications
 
 - **Feedback Messages:** Users receive real-time feedback messages upon successful actions (e.g., post creation, update, delete) and error messages for any encountered issues.
+
+## Technology Stack
+
+- **Frontend:** React.js, React Router DOM, React Hook Form, React Icons, React DatePicker, React Helmet Async, React Tabs, React Toastify, Axios, SweetAlert2, Swiper.
+- **Backend:** Firebase (Realtime Database, Authentication).
+- **Others:** LocalForage (for client-side storage), Match-sorter, Sort-by.
 
 ## Feedback and Support
 
