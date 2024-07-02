@@ -39,7 +39,7 @@ Volunteer Venue is a platform designed to connect volunteers with meaningful opp
 
 - **Frontend:** React.js, React Router DOM, React Hook Form, React Icons, React DatePicker, React Helmet Async, React Tabs, React Toastify, Axios, SweetAlert2, Swiper.
 - **Backend:** Firebase (Realtime Database, Authentication).
-- **Others:** LocalForage (for client-side storage), Match-sorter, Sort-by.
+
 
 ## Feedback and Support
 
