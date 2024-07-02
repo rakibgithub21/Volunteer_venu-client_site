@@ -1,7 +1,6 @@
 # Volunteer Venue
 
-## Live Site URL
-[Volunteer Veue](https://volunteer-venu-a11.web.app/)
+## Live Site URL [Volunteer Veue](https://volunteer-venu-a11.web.app/)
 
 **Server Side Github Repository Link:** https://github.com/rakibgithub21/Volunteer_venu-server_site
 
